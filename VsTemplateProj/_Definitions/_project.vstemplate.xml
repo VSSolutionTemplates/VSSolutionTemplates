@@ -1,0 +1,37 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Jump Street Mobile</Name>
+    <Description>Project Jump Street is an application accelerator for building Azure Mobile Applications.</Description>
+    <DefaultName>JumpStreetProject</DefaultName>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>sw-file-icon.png</Icon>
+    <TemplateID>602217b2-d0c3-456f-848b-7aebb3a33449</TemplateID>
+    <!-- Indicates how many parent folders this item template should appear in -->
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="VsTemplateProj.csproj" File="VsTemplateProj.csproj" ReplaceParameters="true">
+    </Project>
+    <CustomParameters>
+      <CustomParameter Name="TemplateName" Value="JumpStreetMobile"/>
+      <CustomParameter Name="PecanWaffleInstallBranch" Value="dev"/>
+	  <CustomParameter Name="Item" Value="Item" />
+    </CustomParameters>
+  </TemplateContent>
+  <!--<WizardExtension>
+    <Assembly>PecanWaffle, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Assembly>
+    <FullClassName>PecanWaffle.ProjectWizard</FullClassName>
+  </WizardExtension>-->
+  <WizardExtension>
+    <Assembly>JumpStreetMobile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Assembly>
+    <FullClassName>JumpStreetMobile.JumpStreetWizard</FullClassName>
+  </WizardExtension>
+  <!-- JumpStreetMobileVs -->
+</VSTemplate>

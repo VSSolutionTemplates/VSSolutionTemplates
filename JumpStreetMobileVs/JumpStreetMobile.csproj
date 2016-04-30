@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\pecan-waffle-vs.0.0.14-beta\build\pecan-waffle-vs.props" Condition="Exists('..\packages\pecan-waffle-vs.0.0.14-beta\build\pecan-waffle-vs.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <StartAction>Program</StartAction>
+    <StartProgram>$(DevEnvDir)\devenv.exe</StartProgram>
+    <StartArguments>/rootsuffix Exp</StartArguments>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{A8D11169-97CD-4528-AB7C-AA62C86F9766}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JumpStreetMobile</RootNamespace>
+    <AssemblyName>JumpStreetMobile</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <GeneratePkgDefFile>false</GeneratePkgDefFile>
+    <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
+    <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Label="TemplateBuilder">
+    <TemplateBuilderTargets Condition=" '$(TemplateBuilderTargets)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\TemplateBuilder.1.1.4.9-beta\tools\ligershark.templates.targets ))</TemplateBuilderTargets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="JumpStreetWizard.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="index.html" />
+    <None Include="packages.config" />
+    <None Include="Properties\pecan-waffle-settings.props" />
+    <None Include="source.extension.vsixmanifest" />
+    <Content Include="stylesheet.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <!--
+    <Content Include="templates\Components\GCMClient-1.0.info">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\component\Details.md">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\component\GettingStarted.md">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\component\icons\GCMClient_128x128.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\component\icons\GCMClient_512x512.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\component\License.md">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\component\Manifest.xml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\lib\android\GCM.Client.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\samples\Sample\Assets\AboutAssets.txt">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\samples\Sample\GcmService.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\samples\Sample\MainActivity.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\samples\Sample\Properties\AndroidManifest.xml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\samples\Sample\Properties\AssemblyInfo.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\samples\Sample\Resources\AboutResources.txt">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\samples\Sample\Resources\drawable\Icon.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\samples\Sample\Resources\layout\Main.axml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\samples\Sample\Resources\Resource.designer.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\samples\Sample\Resources\values\Strings.xml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Components\GCMClient-1.0\samples\Sample\Sample.csp_roj">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\app.config">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Assets\AboutAssets.txt">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\JumpStreetMobile.Droid.csproj">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\JumpStreetMobile.Droid.csproj.bak">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\MainActivity.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\packages.config">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Properties\AndroidManifest.xml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Properties\AssemblyInfo.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Resources\AboutResources.txt">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Resources\drawable\AddIconWhite.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Resources\drawable\CheckedBoxBlack.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Resources\drawable\icon.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Resources\drawable\SyncIconWhite.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Resources\drawable\UncheckedBoxBlack.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Resources\drawable-hdpi\icon.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Resources\drawable-xhdpi\icon.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Resources\drawable-xxhdpi\icon.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\Droid\Resources\Resource.designer.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\app.config">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\AppDelegate.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Entitlements.plist">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Info.plist">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\ITunesArtwork">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\ITunesArtwork@2x">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\JumpStreetMobile.iOS.csproj">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Main.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\packages.config">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\AddIconWhite.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\CheckedBoxBlack.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Default.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Default@2x.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Default-568h@2x.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Default-Portrait.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Default-Portrait@2x.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Icon-60@2x.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Icon-60@3x.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Icon-76.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Icon-76@2x.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Icon-Small.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Icon-Small@2x.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Icon-Small@3x.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Icon-Small-40.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Icon-Small-40@2x.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\Icon-Small-40@3x.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\LaunchScreen.storyboard">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\SyncIconWhite.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\iOS\Resources\UncheckedBoxBlack.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\JumpStreetMobile.Shared.projitems">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\JumpStreetMobile.Shared.shproj">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\Messages\InitializePage.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\Messages\PersistanceException.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\Messages\ResetUI.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\Messages\ShowMessageDialog.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\Model\ApplicationCapabilities.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\Model\Locator.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\Model\TodoItem.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\Utils\BooleanNegationConverter.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\Utils\BooleanNegationConverterx.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\Utils\IAuthenticate.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\Utils\IConflictResolver.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\Utils\IPushNotifications.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\ViewModel\TodoItemViewModel.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.Shared\ViewModel\TodoListViewModel.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.XForms\App.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.XForms\JumpStreetMobile.XForms.projitems">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.XForms\JumpStreetMobile.XForms.shproj">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.XForms\Platform\App.xaml.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.XForms\Platform\AppDelegate.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.XForms\Platform\MainActivity.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.XForms\Platform\MainPage.xaml.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.XForms\View\ProviderLoginView.xaml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.XForms\View\ProviderLoginView.xaml.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.XForms\View\TodoListView.xaml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobile.XForms\View\TodoListView.xaml.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\App_Start\Startup.MobileApp.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\Controllers\TodoItemController.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\Controllers\UserProfileController.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\DataObjects\TodoItem.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\JumpStreetMobileService.csproj">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\Models\JumpStreetMobileContext.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\packages.config">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\Properties\AssemblyInfo.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\Properties\PublishProfiles\ISU-FY17 - Web Deploy.pubxml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\Startup.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\Web.config">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\Web.Debug.config">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\JumpStreetMobileService\Web.Release.config">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\pw-templateinfo.ps1">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\App.xaml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\App.xaml.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\Assets\AddIconWhite.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\Assets\CheckedBoxBlack.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\Assets\Logo.scale-100.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\Assets\SmallLogo.scale-100.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\Assets\SplashScreen.scale-100.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\Assets\StoreLogo.scale-100.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\Assets\SyncIconBlack.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\Assets\SyncIconWhite.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\Assets\UncheckedBoxBlack.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\JumpStreetMobile.WinApp.csproj">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\MainPage.Windows.xaml.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\MainPage.xaml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\MainPage.xaml.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\Package.appxmanifest">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\packages.config">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinApp\Properties\AssemblyInfo.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\app.config">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\App.xaml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\App.xaml.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\Assets\AddIconWhite.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\Assets\CheckedBoxBlack.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\Assets\Logo.scale-240.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\Assets\SmallLogo.scale-240.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\Assets\SplashScreen.scale-240.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\Assets\Square71x71Logo.scale-240.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\Assets\StoreLogo.scale-240.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\Assets\SyncIconWhite.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\Assets\UncheckedBoxBlack.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\Assets\WideLogo.scale-240.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\JumpStreetMobile.WinPhone81.csproj">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\MainPage.xaml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\MainPage.xaml.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\Package.appxmanifest">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\packages.config">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="templates\WinPhone81\Properties\AssemblyInfo.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    -->
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="LigerShark.FileReplacer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\file-replacer.0.4.5-beta\lib\dotnet\LigerShark.FileReplacer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PecanWaffle, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\pecan-waffle.0.0.14-beta\lib\PecanWaffle.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="EnvDTE100, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="EnvDTE80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="envdte90, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.11.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Immutable.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Immutable.11.0, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.11.0, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TemplateWizardInterface, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(TemplateBuilderTargets)" Condition="Exists('$(TemplateBuilderTargets)')" Label="TemplateBuilder" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\pecan-waffle-vs.0.0.14-beta\build\pecan-waffle-vs.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\pecan-waffle-vs.0.0.14-beta\build\pecan-waffle-vs.props'))" />
+    <Error Condition="!Exists('..\packages\pecan-waffle-vs.0.0.14-beta\build\pecan-waffle-vs.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\pecan-waffle-vs.0.0.14-beta\build\pecan-waffle-vs.targets'))" />
+  </Target>
+  <Import Project="..\packages\pecan-waffle-vs.0.0.14-beta\build\pecan-waffle-vs.targets" Condition="Exists('..\packages\pecan-waffle-vs.0.0.14-beta\build\pecan-waffle-vs.targets')" />
+</Project>

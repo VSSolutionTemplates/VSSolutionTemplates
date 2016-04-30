@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JumpStreetMobile.XForms.View.TodoListView"
+             xmlns:view="clr-namespace:JumpStreetMobile.XForms.View"
+             xmlns:common="clr-namespace:JumpStreetMobile.Shared.Utils">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <common:BooleanNegationConverter x:Key="BooleanNegationConverter" />
+
+      <OnPlatform x:Key="AddIconWhite"
+                x:TypeArguments="ImageSource"
+                iOS="AddIconWhite.png"
+                Android="AddIconWhite.png"
+                WinPhone="Assets/AddIconWhite.png" />
+
+      <OnPlatform x:Key="SyncIconWhite"
+                x:TypeArguments="ImageSource"
+                iOS="SyncIconWhite.png"
+                Android="SyncIconWhite.png"
+                WinPhone="Assets/SyncIconWhite.png" />
+
+      <OnPlatform x:Key="CheckedBoxBlack"
+          x:TypeArguments="ImageSource"
+          iOS="CheckedBoxBlack.png"
+          Android="CheckedBoxBlack.png"
+          WinPhone="Assets/CheckedBoxBlack.png" />
+
+      <OnPlatform x:Key="UncheckedBoxBlack"
+          x:TypeArguments="ImageSource"
+          iOS="UncheckedBoxBlack.png"
+          Android="UncheckedBoxBlack.png"
+          WinPhone="Assets/UncheckedBoxBlack.png" />
+
+      <OnPlatform x:Key="PageMargin"
+                  x:TypeArguments="Thickness"
+                  iOS="10,20,10,5"
+                  Android="10,0,10,5"
+                  WinPhone="10,0,10,5">
+      </OnPlatform>/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  
+  <!--Had to add this ScrollView to fix auto scroll on Android when the keyboard
+  appeared.  Without it, the 'new todo item' entry field would get scrolled
+  up into the page title, not good.  Adding the ScrollView results in
+  no auto scrolling which is perfect.-->
+  <ScrollView>
+    <Grid>
+      <Grid RowSpacing="0" BackgroundColor="#5ABAFF" >
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--Header section-->
+        <Grid Grid.Row="0" BackgroundColor="#5ABAFF" Padding="{StaticResource PageMargin}">
+          <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+          </Grid.RowDefinitions>
+          <Grid.Padding>
+            <OnPlatform x:TypeArguments="Thickness"
+            iOS="10,20,10,0"
+            Android="10,1,10,0"
+            WinPhone="10,1,10,0">
+            </OnPlatform>
+          </Grid.Padding>
+        
+          <!--Application Title-->
+          <StackLayout Grid.Row="0" Padding="0">
+            <ContentView Padding="0" HorizontalOptions="Start">
+              <ContentView.Padding>
+                <OnPlatform x:TypeArguments="Thickness"
+                  iOS="0,5,0,0"
+                  Android="0,5,0,0"
+                  WinPhone="0,5,0,00">
+                </OnPlatform>
+              </ContentView.Padding>
+
+              <Label TextColor="#555555" Text="Task List" FontSize="Large" />
+            </ContentView>
+            <ContentView Padding="5,-15,0,0" HorizontalOptions="Start">
+              <ContentView.Padding>
+                <OnPlatform x:TypeArguments="Thickness"
+                  iOS="5,-10,0,0"
+                  Android="5,-10,0,0"
+                  WinPhone="5,-15,0,0">
+                </OnPlatform>
+              </ContentView.Padding>
+            
+              <Label TextColor="White" Text="{Binding Version}" FontSize="Micro" />
+            </ContentView>
+          </StackLayout>
+
+          <!--Login Launcher-->
+          <ContentView Grid.Row="0" >
+            <Label x:Name="LoginLabel" Text="{Binding LoginStatus}" TextColor="White" FontSize="Medium" VerticalOptions="Start" HorizontalOptions="End">
+              <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnLoginTapped"/>
+              </Label.GestureRecognizers>
+            </Label>
+          </ContentView>
+
+          <!--Add Item UI-->
+          <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition>
+                <ColumnDefinition.Width>
+                  <OnPlatform x:TypeArguments="GridLength"
+                    iOS="32"
+                    Android="32"
+                    WinPhone="40" />
+                </ColumnDefinition.Width>
+              </ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.Padding>
+              <OnPlatform x:TypeArguments="Thickness"
+                iOS="0,-5,0,0"
+                Android="0,-10,0,0"
+                WinPhone="0,-10,0,0">
+              </OnPlatform>
+            </Grid.Padding>
+          
+            <ContentView Grid.Column="0" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+              <Entry x:Name="newItemName" Text="{Binding TodoListViewModel.Name, Mode=TwoWay}" IsEnabled="{Binding TodoListViewModel.IsAddActive, Converter={StaticResource BooleanNegationConverter}}" Placeholder="Todo item description" Completed="OnAdd" />
+            </ContentView>
+            <ContentView Grid.Column="1" Padding="0" HorizontalOptions="End" VerticalOptions="Center">
+              <Image Source="{StaticResource AddIconWhite}" Opacity="{Binding TodoListViewModel.AddButtonOpacity}">
+                <Image.WidthRequest>
+                  <OnPlatform x:TypeArguments="x:Double"
+                    iOS="32"
+                    Android="32"
+                    WinPhone="40" />
+                </Image.WidthRequest>
+                <Image.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="OnAdd"/>
+                </Image.GestureRecognizers>
+              </Image>
+            </ContentView>
+          </Grid>
+        </Grid>
+
+        <!--Connection Status-->
+        <Grid Grid.Row="1" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="Fill" VerticalOptions="Center" BackgroundColor="#5ABAFF" IsVisible="{Binding IsSyncEnabled}" >
+            <Grid.Padding>
+              <OnPlatform x:TypeArguments="Thickness"
+                iOS="0,-5,10,5"
+                Android="0,-10,10,5"
+                WinPhone="0,-5,10,10">
+              </OnPlatform>
+            </Grid.Padding>
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition>
+              <ColumnDefinition.Width>
+                <OnPlatform x:TypeArguments="GridLength"
+                  iOS="32"
+                  Android="32"
+                  WinPhone="40" />
+              </ColumnDefinition.Width>
+            </ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+          </Grid.RowDefinitions>
+        
+          <ContentView Grid.Column="0" Padding="0,0,10,0" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="Center" >
+            <Label Text="{Binding OnlineStatus}" FontSize="Medium" VerticalOptions="Center" InputTransparent="True"/>
+          </ContentView>
+          <ContentView Grid.Column="1" Padding="0" VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsVisible="{Binding IsAuthenticated}" >
+            <Image.WidthRequest>
+                <OnPlatform x:TypeArguments="x:Double"
+                  iOS="32"
+                  Android="32"
+                  WinPhone="40" />
+              </Image.WidthRequest>
+            <Image Source="{StaticResource SyncIconWhite}" >
+              <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnRefresh"/>
+              </Image.GestureRecognizers>
+            </Image>
+          </ContentView>
+        </Grid>
+
+        <!--Activity Indicator-->
+        <ActivityIndicator Grid.Row="1" WidthRequest="200" HeightRequest="40"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       IsRunning="{Binding IsBusy}"
+                       x:Name="syncIndicator"/>
+
+        <!--Todo ListView-->
+        <ContentView Grid.Row="2" BackgroundColor="White">
+          <ContentView.Padding>
+            <OnPlatform x:TypeArguments="Thickness"
+              iOS="0,-5,0,0"
+              Android="0,15,0,0"
+              WinPhone="0,15,0,0">
+            </OnPlatform>
+          </ContentView.Padding>
+        
+          <ListView x:Name="todoList"
+            ItemsSource ="{Binding TodoItems}"
+            ItemSelected="OnCompleted"
+            IsPullToRefreshEnabled="true"
+            Refreshing="OnRefresh">
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <Grid Padding="15,5,0,0">
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="Auto" />
+                      <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                  
+                    <ContentView Grid.Column="0" VerticalOptions="Center" >
+                      <ContentView.Padding>
+                        <OnPlatform x:TypeArguments="Thickness"
+                          iOS="5,3,5,0"
+                          Android="5,4,10,0"
+                          WinPhone="5,4,10,0">
+                        </OnPlatform>
+                      </ContentView.Padding>
+
+                      <Image Source="{StaticResource CheckedBoxBlack}" WidthRequest="20" IsVisible="{Binding Done}" VerticalOptions="Center" />
+                    </ContentView>
+                    <ContentView Grid.Column="0" VerticalOptions="Center" >
+                      <ContentView.Padding>
+                        <OnPlatform x:TypeArguments="Thickness"
+                          iOS="5,3,5,0"
+                          Android="5,4,10,0"
+                          WinPhone="5,4,10,0">
+                        </OnPlatform>
+                      </ContentView.Padding>
+        
+                      <Image Source="{StaticResource UncheckedBoxBlack}" WidthRequest="20" IsVisible="{Binding Done, Converter={StaticResource BooleanNegationConverter}}" VerticalOptions="Center" />
+                    </ContentView>
+                    <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" FontSize="Medium" TextColor="Black" />
+                  </Grid>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </ContentView>
+      </Grid>
+
+      <Grid BackgroundColor="#5ABAFF" IsVisible="{Binding ShowLogin}" >
+        <view:ProviderLoginView IsVisible="{Binding ShowLogin}" />
+      </Grid>
+    </Grid>    
+  </ScrollView>
+</ContentPage>

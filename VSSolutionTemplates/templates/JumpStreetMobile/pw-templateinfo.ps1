@@ -38,13 +38,13 @@ Set-TemplateInfo -templateInfo $templateInfo
 
 <#
 Use this one-liner to figure out the include expression for the project name
-> Get-ChildItem C:\data\mycode\JumpStreetMobile\JumpStreetMobileVs\templates * -Recurse -File|select-string 'JumpStreetMobile' -SimpleMatch|Select-Object -ExpandProperty path -Unique|% { Get-Item $_ | Select-Object -ExpandProperty extension}|Select-Object -Unique|%{ Write-Host "'$_';" -NoNewline }
+> Get-ChildItem VSSolutionTemplates\templates * -Recurse -File|select-string 'JumpStreetMobile' -SimpleMatch|Select-Object -ExpandProperty path -Unique|% { Get-Item $_ | Select-Object -ExpandProperty extension}|Select-Object -Unique|%{ Write-Host "'$_';" -NoNewline }
 
 
 '.sln';'.vstemplate';'.csproj';'.bak';'.cs';'.xml';'.plist';'.projitems';'.shproj';'.xaml';'.config';'.pubxml';'.appxmanifest'
 
 Use this one-liner to figure out the guids in your template
-> Get-ChildItem .\JumpStreetMobileVs\templates *.*proj -Recurse -File|Select-Object -ExpandProperty fullname -Unique|% { ([xml](Get-Content $_)).Project.PropertyGroup.ProjectGuid|Select-Object -Unique|%{ '({0}, {{"$ProjectId"}}, {{[System.Guid]::NewGuid()}},@("*.*proj")),' -f $_ }}
+> Get-ChildItem .\VSSolutionTemplates\templates *.*proj -Recurse -File|Select-Object -ExpandProperty fullname -Unique|% { ([xml](Get-Content $_)).Project.PropertyGroup.ProjectGuid|Select-Object -Unique|%{ '({0}, {{"$ProjectId"}}, {{[System.Guid]::NewGuid()}},@("*.*proj")),' -f $_ }}
 
 ({8EBB17C5-5B87-466B-99BE-709C04F71BC8}, {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*proj")),
 ({B095DC2E-19D7-4852-9450-6774808B626E}, {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*proj")),

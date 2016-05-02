@@ -29,8 +29,8 @@ if([string]::IsNullOrWhiteSpace($outputPath)){
 }
 
 $env:GeoffreyBinPath = $outputPath
-[string]$slnFile = (get-item(Join-Path $scriptDir 'JumpStreetMobileVs.sln')).FullName
-[string]$sln2File = (get-item(join-path $scriptDir 'JumpStreetMobileVs\templates\JumpStreetMobile\JumpStreetMobile.sln')).FullName
+[string]$slnFile = (get-item(Join-Path $scriptDir 'VSSolutionTemplates.sln')).FullName
+[string]$sln2File = (get-item(join-path $scriptDir 'VSSolutionTemplates\templates\JumpStreetMobile\JumpStreetMobile.sln')).FullName
 
 function EnsurePsbuildInstlled{
     [cmdletbinding()]

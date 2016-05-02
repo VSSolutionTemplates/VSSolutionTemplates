@@ -31,7 +31,6 @@
   </WizardExtension>-->
   <WizardExtension>
     <Assembly>JumpStreetMobile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Assembly>
-    <FullClassName>JumpStreetMobile.JumpStreetWizard</FullClassName>
+    <FullClassName>JumpStreetMobile.VSSolutionWizard</FullClassName>
   </WizardExtension>
-  <!-- JumpStreetMobileVs -->
 </VSTemplate>

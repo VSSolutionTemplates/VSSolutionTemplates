@@ -51,7 +51,7 @@
     <TemplateBuilderTargets Condition=" '$(TemplateBuilderTargets)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\TemplateBuilder.1.1.4.9-beta\tools\ligershark.templates.targets ))</TemplateBuilderTargets>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="JumpStreetWizard.cs" />
+    <Compile Include="VSSolutionWizard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

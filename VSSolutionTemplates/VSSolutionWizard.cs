@@ -7,8 +7,8 @@
     using System.Reflection;
     using System.Threading;
 
-    public class JumpStreetWizard : ProjectWizard {
-        public JumpStreetWizard() : base() {
+    public class VSSolutionWizard : ProjectWizard {
+        public VSSolutionWizard() : base() {
             ExtensionInstallDir = (new DirectoryInfo(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)).FullName);
             Properties["ExtensionInstallDir"] = ExtensionInstallDir;
         }

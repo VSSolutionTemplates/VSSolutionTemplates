@@ -22,9 +22,9 @@
   </WizardExtension>-->
   <WizardExtension>
     <Assembly>JumpStreetMobile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Assembly>
-    <FullClassName>JumpStreetMobile.JumpStreetWizard</FullClassName>
+    <FullClassName>JumpStreetMobile.VSSolutionWizard</FullClassName>
   </WizardExtension>
-  <!-- JumpStreetMobileVs -->
+
   <TemplateContent>
     <Project TargetFileName="$safeprojectname$.csproj" File="VsTemplateProj.csproj" ReplaceParameters="true" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005"></Project>
     <CustomParameters xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">

@@ -26,7 +26,7 @@ $templateInfo | replace (
 
 # when the template is run any filename with the given string will be updated
 $templateInfo | update-filename (
-    ,('JumpStreetMobile', {"$ProjectName"},$null,@('.csproj','.bak','.projitems','.shproj','.cs'))
+    ,('JumpStreetMobile', {"$ProjectName"}<#,$null,@('.csproj','.bak','.projitems','.shproj','.cs')#>)
 )
 # excludes files from the template
 $templateInfo | exclude-file 'pw-*.*','*.user','*.suo','*.userosscache','project.lock.json','*.vs*scc'

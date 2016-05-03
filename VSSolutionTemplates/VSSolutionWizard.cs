@@ -1,4 +1,4 @@
-﻿namespace JumpStreetMobile {
+﻿namespace VSSolutionTemplates {
     using PecanWaffle;
     using System;
     using System.Collections.Generic;

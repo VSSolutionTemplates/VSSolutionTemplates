@@ -9,7 +9,7 @@ if($env:APPVEYOR_REPO_BRANCH -eq "release"){
 
     .\build.ps1
 
-    if ($env:APPVEYOR_REPO_NAME -eq "managedcoder/JumpStreetMobile") {
+    if ($env:APPVEYOR_REPO_NAME -eq "VSSolutionTemplates/VSSolutionTemplates") {
 	    Vsix-PublishToGallery
     }
 }

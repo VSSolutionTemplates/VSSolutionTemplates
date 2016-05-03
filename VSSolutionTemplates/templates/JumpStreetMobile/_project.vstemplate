@@ -21,8 +21,8 @@
     <FullClassName>PecanWaffle.ProjectWizard</FullClassName>
   </WizardExtension>-->
   <WizardExtension>
-    <Assembly>JumpStreetMobile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Assembly>
-    <FullClassName>JumpStreetMobile.VSSolutionWizard</FullClassName>
+    <Assembly>VSSolutionTemplates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Assembly>
+    <FullClassName>VSSolutionTemplates.VSSolutionWizard</FullClassName>
   </WizardExtension>
 
   <TemplateContent>

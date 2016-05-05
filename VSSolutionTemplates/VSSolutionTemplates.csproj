@@ -562,13 +562,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\contrib\Microsoft.VisualStudio.TemplateWizardInterface.dll</HintPath>
     </Reference>
-    <!--<Reference Include="PecanWaffle, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="PecanWaffle, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\pecan-waffle.0.0.15-beta\lib\PecanWaffle.dll</HintPath>
       <Private>True</Private>
-    </Reference>-->
-    <Reference Include="PecanWaffle, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\pecan-waffle\vs-src\PecanWaffle\bin\Debug\PecanWaffle.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.IO.Compression" />

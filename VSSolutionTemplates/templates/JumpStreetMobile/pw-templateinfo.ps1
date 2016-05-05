@@ -13,7 +13,7 @@ $templateInfo = New-Object -TypeName psobject -Property @{
 }
 
 $templateInfo | replace (
-    ('JumpStreetMobile', {"$ProjectName"}, {"$DefaultProjectName"},@('.sln';'.vstemplate';'.csproj';'.bak';'.cs';'.xml';'.plist';'.projitems';'.shproj';'.xaml';'.config';'.pubxml';'.appxmanifest')),
+    ('JumpStreetMobile', {"$ProjectName"}, {"$DefaultProjectName"}<#,@('.sln';'.vstemplate';'.csproj';'.bak';'.cs';'.xml';'.plist';'.projitems';'.shproj';'.xaml';'.config';'.pubxml';'.appxmanifest')#>),
 
     ('8EBB17C5-5B87-466B-99BE-709C04F71BC8', {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*proj")),
     ('B095DC2E-19D7-4852-9450-6774808B626E', {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*proj")),

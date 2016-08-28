@@ -1,0 +1,65 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appName": {
+      "value": ""
+    },
+    "sqlServerAdminLogin": {
+      "value": ""
+    },
+    "sqlServerAdminPassword": {
+      "value": ""
+    },
+    "microsoftAuth": {
+      "value": {
+        "clientId": "",
+        "clientSecret": ""
+      }
+    },
+    "googleAuth": {
+      "value": {
+        "googleClientId": "",
+        "googleClientSecret": ""
+      }
+    },
+    "facebookAuth": {
+      "value": {
+        "facebookAppId": "",
+        "facebookAppSecret": ""
+      }
+    },
+    "twitterAuth": {
+      "value": {
+        "twitterConsumerKey": "",
+        "twitterConsumerSecret": ""
+      }
+    },
+    "aadAuth": {
+      "value": {
+        "clientId": "",
+        "issuer": ""
+      }
+    },
+
+    // Notification Hub Credentials (for Windows, Google, and Apple push notification services)
+    "wnsCredential": {
+      "value": {
+        "packageSid": "",
+        "secretKey": ""
+      }
+    },
+    "gcmCredential": {
+      "value": {
+        "googleApiKey": ""
+      }
+    },
+    "apnsCredential": {
+      "value": {
+        // Thumbnail of .p12 cert.  You can get this by running this command:
+        // Get-PfxCertificate -filepath <path to .p12 file>
+        "certificateKey": ""
+      }
+    }
+  }
+}

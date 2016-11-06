@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpStreetMobile.Droid", "Droid\JumpStreetMobile.Droid.csproj", "{8EBB17C5-5B87-466B-99BE-709C04F71BC8}"
 EndProject
@@ -28,16 +28,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		JumpStreetMobile.Shared\JumpStreetMobile.Shared.projitems*{0a7800a3-784f-4822-8956-7bac2c4d194e}*SharedItemsImports = 4
+		JumpStreetMobile.XForms\JumpStreetMobile.XForms.projitems*{0a7800a3-784f-4822-8956-7bac2c4d194e}*SharedItemsImports = 4
+		JumpStreetMobile.XForms\JumpStreetMobile.XForms.projitems*{1dfffd59-6b32-4937-bfde-1e10c11d22c3}*SharedItemsImports = 13
+		JumpStreetMobile.Shared\JumpStreetMobile.Shared.projitems*{6b0a711c-8401-4240-ba08-a8198efc271e}*SharedItemsImports = 4
+		JumpStreetMobile.XForms\JumpStreetMobile.XForms.projitems*{6b0a711c-8401-4240-ba08-a8198efc271e}*SharedItemsImports = 4
 		JumpStreetMobile.Shared\JumpStreetMobile.Shared.projitems*{8ebb17c5-5b87-466b-99be-709c04f71bc8}*SharedItemsImports = 4
 		JumpStreetMobile.XForms\JumpStreetMobile.XForms.projitems*{8ebb17c5-5b87-466b-99be-709c04f71bc8}*SharedItemsImports = 4
 		JumpStreetMobile.Shared\JumpStreetMobile.Shared.projitems*{b095dc2e-19d7-4852-9450-6774808b626e}*SharedItemsImports = 4
 		JumpStreetMobile.XForms\JumpStreetMobile.XForms.projitems*{b095dc2e-19d7-4852-9450-6774808b626e}*SharedItemsImports = 4
 		JumpStreetMobile.Shared\JumpStreetMobile.Shared.projitems*{e651c0cb-f5fb-4257-9289-ef45f3c1a02c}*SharedItemsImports = 13
-		JumpStreetMobile.Shared\JumpStreetMobile.Shared.projitems*{0a7800a3-784f-4822-8956-7bac2c4d194e}*SharedItemsImports = 4
-		JumpStreetMobile.XForms\JumpStreetMobile.XForms.projitems*{0a7800a3-784f-4822-8956-7bac2c4d194e}*SharedItemsImports = 4
-		JumpStreetMobile.Shared\JumpStreetMobile.Shared.projitems*{6b0a711c-8401-4240-ba08-a8198efc271e}*SharedItemsImports = 4
-		JumpStreetMobile.XForms\JumpStreetMobile.XForms.projitems*{6b0a711c-8401-4240-ba08-a8198efc271e}*SharedItemsImports = 4
-		JumpStreetMobile.XForms\JumpStreetMobile.XForms.projitems*{1dfffd59-6b32-4937-bfde-1e10c11d22c3}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppStore|Any CPU = AppStore|Any CPU
@@ -110,14 +110,18 @@ Global
 		{8EBB17C5-5B87-466B-99BE-709C04F71BC8}.Release|x86.ActiveCfg = Release|Any CPU
 		{8EBB17C5-5B87-466B-99BE-709C04F71BC8}.Release|x86.Build.0 = Release|Any CPU
 		{8EBB17C5-5B87-466B-99BE-709C04F71BC8}.Release|x86.Deploy.0 = Release|Any CPU
-		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|Any CPU.ActiveCfg = AppStore|iPhone
-		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|ARM.ActiveCfg = AppStore|iPhone
-		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
-		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|iPhone.Build.0 = AppStore|iPhone
-		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
-		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
-		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|x64.ActiveCfg = AppStore|iPhone
-		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|x86.ActiveCfg = AppStore|iPhone
+		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|Any CPU.ActiveCfg = Release|iPhoneSimulator
+		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|Any CPU.Build.0 = Release|iPhoneSimulator
+		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|ARM.ActiveCfg = Release|iPhoneSimulator
+		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|ARM.Build.0 = Release|iPhoneSimulator
+		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|iPhone.ActiveCfg = Release|iPhone
+		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|iPhone.Build.0 = Release|iPhone
+		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|x64.ActiveCfg = Release|iPhoneSimulator
+		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|x64.Build.0 = Release|iPhoneSimulator
+		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|x86.ActiveCfg = Release|iPhoneSimulator
+		{B095DC2E-19D7-4852-9450-6774808B626E}.AppStore|x86.Build.0 = Release|iPhoneSimulator
 		{B095DC2E-19D7-4852-9450-6774808B626E}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
 		{B095DC2E-19D7-4852-9450-6774808B626E}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
 		{B095DC2E-19D7-4852-9450-6774808B626E}.Debug|ARM.ActiveCfg = Debug|iPhone

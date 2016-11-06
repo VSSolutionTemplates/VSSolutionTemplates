@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿// Just testing remote push and need to add this change to have someting to remote push
+using GalaSoft.MvvmLight;
 using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;

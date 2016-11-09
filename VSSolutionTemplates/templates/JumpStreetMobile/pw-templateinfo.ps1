@@ -15,18 +15,18 @@ $templateInfo = New-Object -TypeName psobject -Property @{
 $templateInfo | replace (
     ('JumpStreetMobile', {"$ProjectName"}, {"$DefaultProjectName"} ,@('*.sln','*.ps1','*.vstemplate','*.csproj','*.bak','*.cs','*.xml','*.plist','*.projitems','*.shproj','*.xaml','*.config','*.appxmanifest','*.deployproj') ),
 
-    ('8EBB17C5-5B87-466B-99BE-709C04F71BC8', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj')),
-    ('B095DC2E-19D7-4852-9450-6774808B626E', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj')),
-    ('e651c0cb-f5fb-4257-9289-ef45f3c1a02c', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj')),
-    ('1dfffd59-6b32-4937-bfde-1e10c11d22c3', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj')),
-    ('4D2348EA-44AA-479F-80FB-EF67D64F4F3A', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj')),
-    ('0A7800A3-784F-4822-8956-7BAC2C4D194E', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj')),
-    ('6B0A711C-8401-4240-BA08-A8198EFC271E', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj'))
+    ('8EBB17C5-5B87-466B-99BE-709C04F71BC8', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj')),
+    ('B095DC2E-19D7-4852-9450-6774808B626E', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj')),
+    ('e651c0cb-f5fb-4257-9289-ef45f3c1a02c', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj')),
+    ('1dfffd59-6b32-4937-bfde-1e10c11d22c3', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj')),
+    ('4D2348EA-44AA-479F-80FB-EF67D64F4F3A', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj')),
+    ('0A7800A3-784F-4822-8956-7BAC2C4D194E', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj')),
+    ('6B0A711C-8401-4240-BA08-A8198EFC271E', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj'))
 )
 
 # when the template is run any filename with the given string will be updated
 $templateInfo | update-filename (
-    ,('JumpStreetMobile', {"$ProjectName"},$null,@('*.sln','*.csproj','*.bak','*.projitems','*.shproj','*.cs'))
+    ,('JumpStreetMobile', {"$ProjectName"},$null,@('*.sln','*.csproj','*.bak','*.projitems','*.shproj','*.cs','*.deployproj'))
 )
 # excludes files from the template
 $templateInfo | exclude-file 'pw-*.*','*.user','*.suo','*.userosscache','project.lock.json','*.vs*scc'

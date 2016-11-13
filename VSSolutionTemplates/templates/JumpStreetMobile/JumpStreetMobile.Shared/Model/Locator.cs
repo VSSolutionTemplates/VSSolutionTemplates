@@ -49,7 +49,7 @@ namespace JumpStreetMobile.Shared.Model
         /// https scheme for URL to backend service otherwise you will get a runtime exception stating the lack
         /// of https in the URL.
         /// </remarks>
-        public Uri ApplicationUri = new Uri(@"<URL of Azure Mobile App service>");
+        public Uri ApplicationUri = new Uri(@"http://JumpStreetMobile.azurewebsites.net");
 
         #region private MobileServiceClient MobileService
         public MobileServiceClient _MobileService = null;

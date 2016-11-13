@@ -29,7 +29,7 @@ namespace JumpStreetMobile.Shared.Model
         ///        instead of entire controller if that's what you need.
         ///     5) Republish Service to Azure
         /// </remarks>
-        static public bool IsAuthenticationRequired { get { return true; } }
+        static public bool IsAuthenticationRequired { get { return false; } }
 
         #region Authentication Providers
 #if !SERVER_SIDE
@@ -67,7 +67,7 @@ namespace JumpStreetMobile.Shared.Model
         ///     1) Change this property to return true
         ///     2) Republish the Service project to Azure
         /// </remarks>
-        static public bool IsPushNotificationRequired { get { return true; } }
+        static public bool IsPushNotificationRequired { get { return false; } }
         #endregion
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace JumpStreetMobile.Shared.Model
         /// You don't need to republish the server project to Azure when you change this
         /// setting since it is not currently referenced by server side.
         /// </remarks>
-        static public ModeOfOperation ModeOfOperation { get { return ModeOfOperation.OnlineAndOffline; } }
+        static public ModeOfOperation ModeOfOperation { get { return ModeOfOperation.OfflineOnly; } }
     }
 
     public enum ModeOfOperation

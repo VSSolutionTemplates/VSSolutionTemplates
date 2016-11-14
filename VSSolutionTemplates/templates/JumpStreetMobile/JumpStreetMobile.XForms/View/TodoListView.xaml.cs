@@ -89,7 +89,8 @@ namespace JumpStreetMobile.XForms.View
                     // Now that offline data have been fetched and bound, attempt to sync data with server.
                     // Note: Call to Locator.Instance.SyncChanges() after you call Locator.Instance.GetTodoItems()
                     // so page is fully active while sync executing asynchronously
-                    if (Locator.Instance.IsSyncEnabled && Locator.Instance.IsAuthenticated)
+                    if ((Locator.Instance.IsSyncEnabled && Locator.Instance.IsAuthenticated) ||
+                        (Locator.Instance.IsSyncEnabled && !Locator.Instance.IsAuthenticationRequired))
                         await Locator.Instance.SyncChanges();
                 }
             }

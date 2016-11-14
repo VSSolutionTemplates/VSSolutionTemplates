@@ -186,7 +186,8 @@ namespace JumpStreetMobile.Shared.ViewModel
                 Locator.Instance.TodoItems.Add(new TodoItemViewModel() { TodoItem = this.TodoItemViewModel.TodoItem });
 
                 // If connected then push changes to server but it won't pull any server updates
-                if (Locator.Instance.IsSyncEnabled && Locator.Instance.IsOnline)
+                if ((Locator.Instance.IsSyncEnabled && Locator.Instance.IsOnline) ||
+                    (Locator.Instance.IsSyncEnabled && !Locator.Instance.IsAuthenticationRequired))
                     await Locator.Instance.PushChanges();
 
                 // Reset UI in preparation for subsequent entries

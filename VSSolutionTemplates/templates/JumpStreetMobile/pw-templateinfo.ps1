@@ -21,7 +21,8 @@ $templateInfo | replace (
     ('1dfffd59-6b32-4937-bfde-1e10c11d22c3', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj','json')),
     ('4D2348EA-44AA-479F-80FB-EF67D64F4F3A', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj','json')),
     ('0A7800A3-784F-4822-8956-7BAC2C4D194E', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj','json')),
-    ('6B0A711C-8401-4240-BA08-A8198EFC271E', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj','json'))
+    ('6B0A711C-8401-4240-BA08-A8198EFC271E', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj','json')),
+    ('68D82A27-F8EA-4550-9AC7-766CC4CA164E', {$null}, {[System.Guid]::NewGuid()},@('*.sln','*.ps1','*.csproj','*.bak','*.projitems','*.shproj','*.deployproj','json'))
 )
 
 # when the template is run any filename with the given string will be updated
@@ -53,6 +54,7 @@ Use this one-liner to figure out the guids in your template
 ({4D2348EA-44AA-479F-80FB-EF67D64F4F3A}, {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*proj")),
 ({0A7800A3-784F-4822-8956-7BAC2C4D194E}, {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*proj")),
 ({6B0A711C-8401-4240-BA08-A8198EFC271E}, {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*proj")),
+({68D82A27-F8EA-4550-9AC7-766CC4CA164E}, {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*proj")),
 
 
 use this one-liner to figure out the include statement for update-filename

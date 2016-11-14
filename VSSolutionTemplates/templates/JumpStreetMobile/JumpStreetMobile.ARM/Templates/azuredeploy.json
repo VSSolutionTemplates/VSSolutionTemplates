@@ -198,7 +198,7 @@
           ],
           "properties": {
             // Set general auth settings
-            "enabled": true, // Set App Service Authentication to "On"
+            "enabled": false, // Set to true if you want to App Service Authentication to "On", otherwise set it to false
             "unauthenticatedClientAction": 0,
             "tokenStoreEnabled": true,
             "defaultProvider": 0,

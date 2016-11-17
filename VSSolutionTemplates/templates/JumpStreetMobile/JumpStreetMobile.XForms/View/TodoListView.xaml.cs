@@ -73,6 +73,10 @@ namespace JumpStreetMobile.XForms.View
             {
                 Locator.Instance.IsBusy = true;
 
+#if WINDOWS_APP
+                AddRightHandGutter();
+#endif
+
                 await Locator.Instance.GetTodoItems();
 
                 // Need to reassign BindingContext now that we have list items 
@@ -98,6 +102,20 @@ namespace JumpStreetMobile.XForms.View
             {
                 Locator.Instance.IsBusy = false;
             }
+        }
+
+        void AddRightHandGutter()
+        {
+            OuterGrid.ColumnDefinitions = new ColumnDefinitionCollection
+            {
+                new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                new ColumnDefinition { Width = new GridLength(15, GridUnitType.Absolute) }
+            };
+
+            OuterGrid.Children.Add(new ContentView
+            {
+                BackgroundColor = Color.White
+            }, 1, 2);
         }
 
         async void DisplayMessageDialog(ShowMessageDialog message)

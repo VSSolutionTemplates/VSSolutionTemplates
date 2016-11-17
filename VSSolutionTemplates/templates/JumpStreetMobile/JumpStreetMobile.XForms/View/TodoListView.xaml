@@ -47,7 +47,7 @@
   no auto scrolling which is perfect.-->
   <ScrollView>
     <Grid>
-      <Grid RowSpacing="0" BackgroundColor="#5ABAFF" >
+      <Grid x:Name="OuterGrid" RowSpacing="0" ColumnSpacing="0" BackgroundColor="#5ABAFF" >
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" />

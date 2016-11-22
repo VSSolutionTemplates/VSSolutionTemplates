@@ -99,7 +99,7 @@
           </StackLayout>
 
           <!--Login Launcher-->
-          <ContentView Grid.Row="0" >
+          <ContentView Grid.Row="0" IsVisible="{Binding IsAuthenticationRequired}">
             <Label x:Name="LoginLabel" Text="{Binding LoginStatus}" TextColor="White" FontSize="Medium" VerticalOptions="Start" HorizontalOptions="End">
               <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnLoginTapped"/>
@@ -174,7 +174,7 @@
           <ContentView Grid.Column="0" Padding="0,0,10,0" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="Center" >
             <Label Text="{Binding OnlineStatus}" FontSize="Medium" VerticalOptions="Center" InputTransparent="True"/>
           </ContentView>
-          <ContentView Grid.Column="1" Padding="0" VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsVisible="{Binding IsAuthenticated}" >
+          <ContentView Grid.Column="1" Padding="0" VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsVisible="{Binding IsSyncEnabled}" >
             <Image.WidthRequest>
                 <OnPlatform x:TypeArguments="x:Double"
                   iOS="32"

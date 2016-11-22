@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using JumpStreetMobile.Shared.Messages;
 using JumpStreetMobile.Shared.Model;
+using JumpStreetMobile.Shared.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +20,21 @@ using JumpStreetMobile.Droid;
 
 namespace JumpStreetMobile.XForms.View
 {
-	public partial class TodoListView : ContentPage, IConflictResolver
+#if !OnlineOnly
+    public partial class TodoListView : ContentPage, IConflictResolver
+#endif
+#if OnlineOnly
+    public partial class TodoListView : ContentPage
+#endif
     {
         public TodoListView()
         {
             InitializeComponent();
 
+#if !OnlineOnly
             // Set conflict resolver that knows how to resolve 
             Locator.Instance.ConflictResolver = (IConflictResolver)this;
-
+#endif
             Messenger.Default.Register<ShowMessageDialog>(this, new Action<ShowMessageDialog>(DisplayMessageDialog));
             Messenger.Default.Register<PersistanceException>(this, new Action<PersistanceException>(ReportPersistanceException));
             Messenger.Default.Register<ResetUI>(this, new Action<ResetUI>(ResetUI));
@@ -36,6 +43,7 @@ namespace JumpStreetMobile.XForms.View
             ResetUI(null);
         }
 
+#if !OnlineOnly
         async public Task<ResolverResponse> Resolve(object server, object local)
         {
             const string keepLocal = "Keep your changes";
@@ -56,6 +64,7 @@ namespace JumpStreetMobile.XForms.View
 
             return result;
         }
+#endif
 
         async protected override void OnAppearing()
         {
@@ -93,8 +102,7 @@ namespace JumpStreetMobile.XForms.View
                     // Now that offline data have been fetched and bound, attempt to sync data with server.
                     // Note: Call to Locator.Instance.SyncChanges() after you call Locator.Instance.GetTodoItems()
                     // so page is fully active while sync executing asynchronously
-                    if ((Locator.Instance.IsSyncEnabled && Locator.Instance.IsAuthenticated) ||
-                        (Locator.Instance.IsSyncEnabled && !Locator.Instance.IsAuthenticationRequired))
+                    if (Locator.Instance.IsOnline && Locator.Instance.IsSyncEnabled && (Locator.Instance.IsAuthenticated || !Locator.Instance.IsAuthenticationRequired))
                         await Locator.Instance.SyncChanges();
                 }
             }
@@ -120,7 +128,7 @@ namespace JumpStreetMobile.XForms.View
 
         async void DisplayMessageDialog(ShowMessageDialog message)
         {
-            await DisplayAlert(message.Title, message.Message, message.OkLabel);
+            await DisplayAlert(message.Title, message.Message, message.OkLabel == null ? "Ok" : message.OkLabel);
         }
 
         async void ReportPersistanceException(PersistanceException exception)
@@ -147,6 +155,11 @@ namespace JumpStreetMobile.XForms.View
         // Event handlers
         public void OnCompleted(object sender, SelectedItemChangedEventArgs e)
         {
+            // ListView has some strange behavior where the ItemSelected event fires twice when an item 
+            // is selected so I had to add this workaround to ignore that second event
+            if ((e.SelectedItem as TodoItemViewModel).Done)
+                return;
+
             // ToDo: When, if ever, EventToCommand becomes available in MVVM Light for Xamarin.Forms
             // get rid of this event handler and switch to EventToCommand in XAML markup
             Locator.Instance.TodoListViewModel.CompleteCommand.Execute(e.SelectedItem);

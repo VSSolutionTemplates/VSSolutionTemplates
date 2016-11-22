@@ -18,6 +18,8 @@ using JumpStreetMobile.Shared.Utils;
 using System.Net.Http;
 using Xamarin.Forms;
 using Plugin.Connectivity;
+using GalaSoft.MvvmLight.Messaging;
+using JumpStreetMobile.Shared.Messages;
 
 namespace JumpStreetMobile.Shared.Model
 {
@@ -28,16 +30,21 @@ namespace JumpStreetMobile.Shared.Model
     /// I did not use dependency injection because there isn't any UI designers in
     /// Xamarin that have design-time data capabilities
     /// </remarks>
+#if !OnlineOnly
     class Locator : ViewModelBase, IMobileServiceSyncHandler
+#endif
+#if OnlineOnly
+    class Locator : ViewModelBase
+#endif
     {
         public string Version { get { return "Version 1.0"; } }
 
-        #region static public Locator Instance
+#region static public Locator Instance
         static Locator _Locator = null;
         static public Locator Instance { get { if (_Locator == null) _Locator = new Locator(); return _Locator; } }
-        #endregion
+#endregion
 
-        #region Mobile Service Related Members
+#region Mobile Service Related Members
 
         // ToDo: Add the NuGet package WindowsAzure.MobileServices.SQLiteStore to every mobile client project
         // For Xamarin.iOS, also edit AppDelegate.cs and uncomment the call to SQLitePCL.CurrentPlatform.Init()
@@ -53,7 +60,7 @@ namespace JumpStreetMobile.Shared.Model
         /// </remarks>
         public Uri ApplicationUri = new Uri(@"https://JumpStreetMobile.azurewebsites.net");
 
-        #region private MobileServiceClient MobileService
+#region private MobileServiceClient MobileService
         public MobileServiceClient _MobileService = null;
         public MobileServiceClient MobileService
         {
@@ -63,7 +70,7 @@ namespace JumpStreetMobile.Shared.Model
                 {
                     _MobileService = new MobileServiceClient(ApplicationUri);
 
-#if !OfflineOnly
+#if !OnlineOnly
                     var store = new MobileServiceSQLiteStore("localstore.db");
 
                     // Create the tables
@@ -77,15 +84,17 @@ namespace JumpStreetMobile.Shared.Model
                     return _MobileService;
             }
         }
-        #endregion
+#endregion
 
-        #region String Constants
+#region String Constants
         const string LOCAL_VERSION = "Use local version";
         const string SERVER_VERSION = "Use server version";
         const string ACTIVE_ITEMS = "ActiveItems";
-        #endregion
+#endregion
 
-        #region IMobileServiceSyncHandler Methods
+#if !OnlineOnly
+
+#region IMobileServiceSyncHandler Methods
         public virtual Task OnPushCompleteAsync(MobileServicePushCompletionResult result)
         {
             return Task.FromResult(0);
@@ -143,11 +152,12 @@ namespace JumpStreetMobile.Shared.Model
 
             return null;
         }
-        #endregion
+#endregion
 
         public IConflictResolver ConflictResolver { get; set; }
+#endif
 
-        #region public bool IsOnline
+#region public bool IsOnline
         /// <summary>
         /// The <see cref="IsOnline" /> property's name.
         /// </summary>
@@ -173,9 +183,9 @@ namespace JumpStreetMobile.Shared.Model
                 OnlineStatus = _IsOnline ? "Online" : "Local";
             }
         }
-        #endregion
+#endregion
 
-        #region public string OnlineStatus
+#region public string OnlineStatus
         /// <summary>
         /// The <see cref="OnlineStatus" /> property's name.
         /// </summary>
@@ -198,9 +208,9 @@ namespace JumpStreetMobile.Shared.Model
                 Set(OnlineStatusPropertyName, ref _OnlineStatus, value);
             }
         }
-        #endregion
+#endregion
 
-        #region public string LoginStatus
+#region public string LoginStatus
         /// <summary>
         /// The <see cref="LoginStatus" /> property's name.
         /// </summary>
@@ -223,7 +233,7 @@ namespace JumpStreetMobile.Shared.Model
                 Set(LoginStatusPropertyName, ref _LoginStatus, value);
             }
         }
-        #endregion
+#endregion
 
         /// <summary>
         /// Sets and gets the IsSyncEnabled property.
@@ -240,30 +250,28 @@ namespace JumpStreetMobile.Shared.Model
         /// </remarks>
         async public Task SyncChanges()
         {
-#if !OfflineOnly
+#if !OnlineOnly
             try
             {
                 // Make sure syncing is enabled and we are connected before attempting to sync
-                if (await IsConnected())
-                {
-                    // The IMobileServiceSyncHandler methods in this class handle conflict resolution, if there is any
-                    await MobileService.SyncContext.PushAsync();
+                // The IMobileServiceSyncHandler methods in this class handle conflict resolution, if there is any
+                await MobileService.SyncContext.PushAsync();
 
-                    // Sync all backing ViewModels here
-                    await SyncTodoItemsViewModel();
+                // Sync all backing ViewModels here
+                await SyncTodoItemsViewModel();
 
-                    IsOnline = true;
-                }
-                else
-                    IsOnline = false;
+                IsOnline = true;
             }
             catch (MobileServicePushFailedException exception)
             {
                 System.Diagnostics.Debug.WriteLine("Database Sync Failed: {0}", exception.PushResult.Status);
+
                 foreach (var error in exception.PushResult.Errors)
                 {
                     System.Diagnostics.Debug.WriteLine("\t{0} failed on {1} because '{2}': {3}", error.OperationKind, error.TableName, error.Status, error.RawResult);
                 }
+
+                Messenger.Default.Send<ShowMessageDialog>(new ShowMessageDialog() { Title = "Sychronization Failed", Message = "Could not reach the backend mobile service possibly due to lack of network connection. Continuing in offline mode. Error: " + exception.Message + " - " + exception.PushResult.Status.ToString() });
 
                 IsOnline = false;
             }
@@ -272,10 +280,9 @@ namespace JumpStreetMobile.Shared.Model
                 // Todo: need to report this error to user to let them know that sync failed
                 System.Diagnostics.Debug.WriteLine("Could not reach mobile service.  Continuing in offline mode.  Error: {0}", args: e.Message);
 
-                IsOnline = false;
+                Messenger.Default.Send<ShowMessageDialog>(new ShowMessageDialog() { Title = "Sychronization Failed", Message = "Could not reach the backend mobile service possibly due to lack of network connection. Continuing in offline mode. Error: " + e.Message });
 
-                // rethrow to resume exception handling and preserve the call stack of exception
-                throw;
+                IsOnline = false;
             }
 
             System.Diagnostics.Debug.WriteLine("IsOnline: {0}", IsOnline);
@@ -284,7 +291,7 @@ namespace JumpStreetMobile.Shared.Model
 
         async public Task PushChanges(bool syncViewModels = false)
         {
-#if !OfflineOnly
+#if !OnlineOnly
             try
             {
                 // The IMobileServiceSyncHandler methods in this class handle conflict resolution, if there is any
@@ -322,7 +329,7 @@ namespace JumpStreetMobile.Shared.Model
 
 #endregion // Mobile Service Related Members
 
-        #region Authentication Members
+#region Authentication Members
 
         public IAuthenticate Authenticator { get; set; }
 
@@ -631,7 +638,7 @@ namespace JumpStreetMobile.Shared.Model
                 return _TodoItems;
             }
         }
-        #endregion
+#endregion
 
 #if !OnlineOnly
         // ToDo: Turn this into a generic method on the order of:

@@ -157,35 +157,7 @@ namespace JumpStreetMobile.Shared.Model
         public IConflictResolver ConflictResolver { get; set; }
 #endif
 
-#region public bool IsOnline
-        /// <summary>
-        /// The <see cref="IsOnline" /> property's name.
-        /// </summary>
-        public const string IsOnlinePropertyName = "IsOnline";
-
-        private bool _IsOnline = false;
-
-        /// <summary>
-        /// Sets and gets the IsOnline property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public bool IsOnline
-        {
-            get
-            {
-                return _IsOnline;
-            }
-            set
-            {
-                Set(IsOnlinePropertyName, ref _IsOnline, value);
-
-                // Set the dependent status property
-                OnlineStatus = _IsOnline ? "Online" : "Local";
-            }
-        }
-#endregion
-
-#region public string OnlineStatus
+        #region public string OnlineStatus
         /// <summary>
         /// The <see cref="OnlineStatus" /> property's name.
         /// </summary>
@@ -208,7 +180,7 @@ namespace JumpStreetMobile.Shared.Model
                 Set(OnlineStatusPropertyName, ref _OnlineStatus, value);
             }
         }
-#endregion
+        #endregion
 
 #region public string LoginStatus
         /// <summary>
@@ -259,8 +231,6 @@ namespace JumpStreetMobile.Shared.Model
 
                 // Sync all backing ViewModels here
                 await SyncTodoItemsViewModel();
-
-                IsOnline = true;
             }
             catch (MobileServicePushFailedException exception)
             {
@@ -271,21 +241,21 @@ namespace JumpStreetMobile.Shared.Model
                     System.Diagnostics.Debug.WriteLine("\t{0} failed on {1} because '{2}': {3}", error.OperationKind, error.TableName, error.Status, error.RawResult);
                 }
 
-                Messenger.Default.Send<ShowMessageDialog>(new ShowMessageDialog() { Title = "Sychronization Failed", Message = "Could not reach the backend mobile service possibly due to lack of network connection. Continuing in offline mode. Error: " + exception.Message + " - " + exception.PushResult.Status.ToString() });
-
-                IsOnline = false;
+                Messenger.Default.Send<ShowMessageDialog>(new ShowMessageDialog() { Title = "Be Aware", Message = "Could not cocnnect to the app service so the application will run in offline mode. Error: " + exception.Message + " - " + exception.PushResult.Status.ToString() });
             }
             catch (Exception e)
             {
-                // Todo: need to report this error to user to let them know that sync failed
-                System.Diagnostics.Debug.WriteLine("Could not reach mobile service.  Continuing in offline mode.  Error: {0}", args: e.Message);
+                // If users chooses to keep server version it can cause the ListView collection to be modified which will
+                // throw an exception with the HResult below which means the enumeration operation may not execute which
+                // we will ignore since its the best we can do. In practice, ignoring this error has worked fine.
+                if (e.HResult != -2146233079)
+                {
+                    // Todo: need to report this error to user to let them know that sync failed
+                    System.Diagnostics.Debug.WriteLine("Could not reach mobile service.  Continuing in offline mode.  Error: {0}", args: e.Message);
 
-                Messenger.Default.Send<ShowMessageDialog>(new ShowMessageDialog() { Title = "Sychronization Failed", Message = "Could not reach the backend mobile service possibly due to lack of network connection. Continuing in offline mode. Error: " + e.Message });
-
-                IsOnline = false;
+                    Messenger.Default.Send<ShowMessageDialog>(new ShowMessageDialog() { Title = "Sychronization Failed", Message = "Could not cocnnect to the app service so the application will run in offline mode. Error: " + e.Message });
+                }
             }
-
-            System.Diagnostics.Debug.WriteLine("IsOnline: {0}", IsOnline);
 #endif
         }
 
@@ -302,8 +272,6 @@ namespace JumpStreetMobile.Shared.Model
                     // Sync all backing ViewModels here
                     await SyncTodoItemsViewModel();
                 }
-
-                IsOnline = true;
             }
             catch (MobileServicePushFailedException exception)
             {
@@ -312,18 +280,11 @@ namespace JumpStreetMobile.Shared.Model
                 {
                     System.Diagnostics.Debug.WriteLine("\t{0} failed on {1} because '{2}': {3}", error.OperationKind, error.TableName, error.Status, error.RawResult);
                 }
-
-                IsOnline = false;
             }
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine("Could not reach mobile service.  Continuing in offline mode.  Error: {0}", e.Message);
-
-                IsOnline = false;
             }
-
-
-            System.Diagnostics.Debug.WriteLine("IsOnline: {0}", IsOnline);
 #endif
         }
 
@@ -492,10 +453,6 @@ namespace JumpStreetMobile.Shared.Model
                     IsAuthenticated = false;
                     LoginStatus = "Login";
 
-                    // By definition, if you were logged in then auth was required so
-                    // we need to switch to local mode now that we logged out
-                    IsOnline = false;
-
                     // Login is only manditory if mode is online-only and authentication is required
                     IsLoginNeeded = ApplicationCapabilities.IsAuthenticationRequired &&
                                     ApplicationCapabilities.ModeOfOperation == ModeOfOperation.OnlineOnly;
@@ -542,23 +499,42 @@ namespace JumpStreetMobile.Shared.Model
                 Set(IsPushNotificationsRegisteredPropertyName, ref _IsPushNotificationsRegistered, value);
             }
         }
-#endregion
+        #endregion
 
-#endregion
+        #endregion
 
-#region Connectivity Members
+        #region Connectivity Members
 
-        async public Task<bool> IsConnected()
+        async public Task<bool> IsOnline()
         {
-            // ToDo: Had to comment out the IsReachable() since it was return false when the
-            // URL was proven to be available with successful service calls
-            return CrossConnectivity.Current.IsConnected;// && 
-                        //await CrossConnectivity.Current.IsReachable(Locator.Instance.ApplicationUri.Host);
+            bool result = true;
+
+            try
+            {
+                var httpClient = new HttpClient();
+                var response = await httpClient.GetAsync(this.MobileService.MobileAppUri);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    System.Diagnostics.Debug.WriteLine("Error: " + response.StatusCode);
+                    result = false;
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Error: " + e.Message);
+                result = false;
+            }
+
+            // Set the dependent status property
+            OnlineStatus = result ? "Online" : "Local";
+
+            return result;
         }
 
-#endregion
+        #endregion
 
-#region public bool IsBusy
+        #region public bool IsBusy
         /// <summary>
         /// The <see cref="IsBusy" /> property's name.
         /// </summary>

@@ -186,7 +186,7 @@ namespace JumpStreetMobile.Shared.ViewModel
                 Locator.Instance.TodoItems.Add(new TodoItemViewModel() { TodoItem = this.TodoItemViewModel.TodoItem });
 
                 // If connected then push changes to server but it won't pull any server updates
-                if (Locator.Instance.IsOnline && Locator.Instance.IsSyncEnabled && (Locator.Instance.IsAuthenticated || !Locator.Instance.IsAuthenticationRequired))
+                if (await Locator.Instance.IsOnline() && Locator.Instance.IsSyncEnabled && (Locator.Instance.IsAuthenticated || !Locator.Instance.IsAuthenticationRequired))
                     await Locator.Instance.PushChanges();
 
                 // Reset UI in preparation for subsequent entries
@@ -221,7 +221,7 @@ namespace JumpStreetMobile.Shared.ViewModel
                 await Locator.Instance.TodoItemTable.UpdateAsync(todoItemViewModel.TodoItem);
 
                 // If connected then push changes to server but it won't pull any server updates
-                if (Locator.Instance.IsSyncEnabled && Locator.Instance.IsOnline)
+                if (Locator.Instance.IsSyncEnabled && await Locator.Instance.IsOnline())
                     await Locator.Instance.PushChanges();
 
                 // Pause so UI can briefly show the checkmark
@@ -262,7 +262,7 @@ namespace JumpStreetMobile.Shared.ViewModel
             {
                 Locator.Instance.IsBusy = true;
 
-                if (await Locator.Instance.IsConnected())
+                if (await Locator.Instance.IsOnline())
                     await Locator.Instance.SyncChanges();
                 else
                     Messenger.Default.Send<ShowMessageDialog>(new ShowMessageDialog { Title = "Synchronization Failed", Message = "Server was unreachable. Are you connected to the Internet?", OkLabel = "Ok" });

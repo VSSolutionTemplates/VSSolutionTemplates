@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using JumpStreetMobile.Shared.Utils;
 using Plugin.Connectivity;
+using System.Net.Http;
 
 #if __IOS__
 #elif __ANDROID__
@@ -93,7 +94,7 @@ namespace JumpStreetMobile.XForms.View
                 BindingContext = null;
                 BindingContext = Locator.Instance;
 
-                if (await Locator.Instance.IsConnected())
+                if (await Locator.Instance.IsOnline())
                 {
                     if (Locator.Instance.IsPushNotificationRequired &&
                         (!ApplicationCapabilities.IsAuthenticationRequired || Locator.Instance.IsAuthenticated))
@@ -102,8 +103,12 @@ namespace JumpStreetMobile.XForms.View
                     // Now that offline data have been fetched and bound, attempt to sync data with server.
                     // Note: Call to Locator.Instance.SyncChanges() after you call Locator.Instance.GetTodoItems()
                     // so page is fully active while sync executing asynchronously
-                    if (Locator.Instance.IsOnline && Locator.Instance.IsSyncEnabled && (Locator.Instance.IsAuthenticated || !Locator.Instance.IsAuthenticationRequired))
+                    if (Locator.Instance.IsSyncEnabled && (Locator.Instance.IsAuthenticated || !Locator.Instance.IsAuthenticationRequired))
                         await Locator.Instance.SyncChanges();
+                }
+                else
+                {
+                    DisplayMessageDialog(new ShowMessageDialog() { Title = "Be Aware", Message = "Could not cocnnect to the app service so the application will run in offline mode." });
                 }
             }
             finally

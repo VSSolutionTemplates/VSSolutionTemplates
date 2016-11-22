@@ -22,7 +22,7 @@ using JumpStreetMobile.Droid;
 namespace JumpStreetMobile.XForms.View
 {
 #if !OnlineOnly
-    public partial class TodoListView : ContentPage, IConflictResolver
+    public partial class TodoListView : ContentPage
 #endif
 #if OnlineOnly
     public partial class TodoListView : ContentPage
@@ -32,10 +32,8 @@ namespace JumpStreetMobile.XForms.View
         {
             InitializeComponent();
 
-#if !OnlineOnly
-            // Set conflict resolver that knows how to resolve 
-            Locator.Instance.ConflictResolver = (IConflictResolver)this;
-#endif
+            // Set conflict resolver that knows how to resolve sychronization conflicts
+            Locator.Instance.ConflictResolver = Resolve;
             Messenger.Default.Register<ShowMessageDialog>(this, new Action<ShowMessageDialog>(DisplayMessageDialog));
             Messenger.Default.Register<PersistanceException>(this, new Action<PersistanceException>(ReportPersistanceException));
             Messenger.Default.Register<ResetUI>(this, new Action<ResetUI>(ResetUI));
@@ -44,7 +42,6 @@ namespace JumpStreetMobile.XForms.View
             ResetUI(null);
         }
 
-#if !OnlineOnly
         async public Task<ResolverResponse> Resolve(object server, object local)
         {
             const string keepLocal = "Keep your changes";
@@ -65,7 +62,6 @@ namespace JumpStreetMobile.XForms.View
 
             return result;
         }
-#endif
 
         async protected override void OnAppearing()
         {
@@ -94,21 +90,29 @@ namespace JumpStreetMobile.XForms.View
                 BindingContext = null;
                 BindingContext = Locator.Instance;
 
-                if (await Locator.Instance.IsOnline())
+                if (ApplicationCapabilities.ModeOfOperation != ModeOfOperation.OfflineOnly)
                 {
-                    if (Locator.Instance.IsPushNotificationRequired &&
-                        (!ApplicationCapabilities.IsAuthenticationRequired || Locator.Instance.IsAuthenticated))
-                        await Locator.Instance.Notifier.InitializeNotificationsAsync();
+                    if (await Locator.Instance.IsOnline())
+                    {
+                        if (Locator.Instance.IsPushNotificationRequired &&
+                            (!ApplicationCapabilities.IsAuthenticationRequired || Locator.Instance.IsAuthenticated))
+                            await Locator.Instance.Notifier.InitializeNotificationsAsync();
 
-                    // Now that offline data have been fetched and bound, attempt to sync data with server.
-                    // Note: Call to Locator.Instance.SyncChanges() after you call Locator.Instance.GetTodoItems()
-                    // so page is fully active while sync executing asynchronously
-                    if (Locator.Instance.IsSyncEnabled && (Locator.Instance.IsAuthenticated || !Locator.Instance.IsAuthenticationRequired))
-                        await Locator.Instance.SyncChanges();
-                }
-                else
-                {
-                    DisplayMessageDialog(new ShowMessageDialog() { Title = "Be Aware", Message = "Could not cocnnect to the app service so the application will run in offline mode." });
+                        // Now that offline data have been fetched and bound, attempt to sync data with server.
+                        // Note: Call to Locator.Instance.SyncChanges() after you call Locator.Instance.GetTodoItems()
+                        // so page is fully active while sync executing asynchronously
+                        if (Locator.Instance.IsSyncEnabled && (Locator.Instance.IsAuthenticated || !Locator.Instance.IsAuthenticationRequired))
+                            await Locator.Instance.SyncChanges();
+                    }
+                    else
+                    {
+                        if (ApplicationCapabilities.ModeOfOperation == ModeOfOperation.OnlineOnly)
+                        {
+                            DisplayMessageDialog(new ShowMessageDialog() { Title = "Connectivity Error", Message = "Could not cocnnect to the app service.  Try again later once you have connectivity" });
+                        }
+                        else
+                            DisplayMessageDialog(new ShowMessageDialog() { Title = "Be Aware", Message = "Could not cocnnect to the app service so the application will run in offline mode." });
+                    }
                 }
             }
             finally

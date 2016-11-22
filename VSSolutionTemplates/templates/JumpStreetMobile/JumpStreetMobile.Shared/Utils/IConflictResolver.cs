@@ -12,8 +12,6 @@ namespace JumpStreetMobile.Shared.Utils
         LocalVersion
     }
 
-    public interface IConflictResolver
-    {
-        Task<ResolverResponse> Resolve(object server, object local);
-    }
+    // Declaration for conflict resolver that gets called from ExecuteTableOperationAsync() when synchronization conflicts occur
+    public delegate Task<ResolverResponse> ConflictResolver(object server, object local);
 }

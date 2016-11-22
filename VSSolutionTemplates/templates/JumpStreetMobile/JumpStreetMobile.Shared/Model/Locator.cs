@@ -131,7 +131,7 @@ namespace JumpStreetMobile.Shared.Model
                 {
                     var serverValue = error.Value;
 
-                    ResolverResponse resolution = await ConflictResolver.Resolve(serverValue, operation.Item);
+                    ResolverResponse resolution = await ConflictResolver(serverValue, operation.Item);
 
                     if (resolution == ResolverResponse.LocalVersion)
                     {
@@ -152,9 +152,13 @@ namespace JumpStreetMobile.Shared.Model
 
             return null;
         }
-#endregion
+        #endregion
 
-        public IConflictResolver ConflictResolver { get; set; }
+        /// <summary>
+        /// Conflict resolver to use when when synchronization conflicts occur
+        /// </summary>
+        public ConflictResolver ConflictResolver { get; set; }
+
 #endif
 
         #region public string OnlineStatus
@@ -507,18 +511,14 @@ namespace JumpStreetMobile.Shared.Model
 
         async public Task<bool> IsOnline()
         {
-            bool result = true;
+            bool result = false;
 
             try
             {
                 var httpClient = new HttpClient();
                 var response = await httpClient.GetAsync(this.MobileService.MobileAppUri);
 
-                if (!response.IsSuccessStatusCode)
-                {
-                    System.Diagnostics.Debug.WriteLine("Error: " + response.StatusCode);
-                    result = false;
-                }
+                result = response.IsSuccessStatusCode;
             }
             catch (Exception e)
             {

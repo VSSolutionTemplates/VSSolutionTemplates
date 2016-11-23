@@ -39,12 +39,12 @@ namespace JumpStreetMobile.Shared.Model
     {
         public string Version { get { return "Version 1.0"; } }
 
-#region static public Locator Instance
+        #region static public Locator Instance
         static Locator _Locator = null;
         static public Locator Instance { get { if (_Locator == null) _Locator = new Locator(); return _Locator; } }
-#endregion
+        #endregion
 
-#region Mobile Service Related Members
+        #region Mobile Service Related Members
 
         // ToDo: Add the NuGet package WindowsAzure.MobileServices.SQLiteStore to every mobile client project
         // For Xamarin.iOS, also edit AppDelegate.cs and uncomment the call to SQLitePCL.CurrentPlatform.Init()
@@ -60,7 +60,7 @@ namespace JumpStreetMobile.Shared.Model
         /// </remarks>
         public Uri ApplicationUri = new Uri(@"https://JumpStreetMobile.azurewebsites.net");
 
-#region private MobileServiceClient MobileService
+        #region private MobileServiceClient MobileService
         public MobileServiceClient _MobileService = null;
         public MobileServiceClient MobileService
         {
@@ -81,20 +81,20 @@ namespace JumpStreetMobile.Shared.Model
 #endif
                 }
 
-                    return _MobileService;
+                return _MobileService;
             }
         }
-#endregion
+        #endregion
 
-#region String Constants
+        #region String Constants
         const string LOCAL_VERSION = "Use local version";
         const string SERVER_VERSION = "Use server version";
         const string ACTIVE_ITEMS = "ActiveItems";
-#endregion
+        #endregion
 
 #if !OnlineOnly
 
-#region IMobileServiceSyncHandler Methods
+        #region IMobileServiceSyncHandler Methods
         public virtual Task OnPushCompleteAsync(MobileServicePushCompletionResult result)
         {
             return Task.FromResult(0);
@@ -154,12 +154,11 @@ namespace JumpStreetMobile.Shared.Model
         }
         #endregion
 
+#endif
         /// <summary>
         /// Conflict resolver to use when when synchronization conflicts occur
         /// </summary>
         public ConflictResolver ConflictResolver { get; set; }
-
-#endif
 
         #region public string OnlineStatus
         /// <summary>
@@ -186,7 +185,7 @@ namespace JumpStreetMobile.Shared.Model
         }
         #endregion
 
-#region public string LoginStatus
+        #region public string LoginStatus
         /// <summary>
         /// The <see cref="LoginStatus" /> property's name.
         /// </summary>
@@ -209,7 +208,7 @@ namespace JumpStreetMobile.Shared.Model
                 Set(LoginStatusPropertyName, ref _LoginStatus, value);
             }
         }
-#endregion
+        #endregion
 
         /// <summary>
         /// Sets and gets the IsSyncEnabled property.
@@ -257,7 +256,7 @@ namespace JumpStreetMobile.Shared.Model
                     // Todo: need to report this error to user to let them know that sync failed
                     System.Diagnostics.Debug.WriteLine("Could not reach mobile service.  Continuing in offline mode.  Error: {0}", args: e.Message);
 
-                    Messenger.Default.Send<ShowMessageDialog>(new ShowMessageDialog() { Title = "Sychronization Failed", Message = "Could not cocnnect to the app service so the application will run in offline mode. Error: " + e.Message });
+                    Messenger.Default.Send<ShowMessageDialog>(new ShowMessageDialog() { Title = "Sychronization Error", Message = "Could not cocnnect to the app service so the application will run in offline mode. Error: " + e.Message });
                 }
             }
 #endif
@@ -292,13 +291,13 @@ namespace JumpStreetMobile.Shared.Model
 #endif
         }
 
-#endregion // Mobile Service Related Members
+        #endregion // Mobile Service Related Members
 
-#region Authentication Members
+        #region Authentication Members
 
         public IAuthenticate Authenticator { get; set; }
 
-#region public bool IsLoginRequested
+        #region public bool IsLoginRequested
 
         /// <summary>
         /// The <see cref="IsLoginRequested" /> property's name.
@@ -326,9 +325,9 @@ namespace JumpStreetMobile.Shared.Model
             }
         }
 
-#endregion // public bool IsLoginRequested
+        #endregion // public bool IsLoginRequested
 
-#region public bool IsLoginNeeded
+        #region public bool IsLoginNeeded
         /// <summary>
         /// The <see cref="IsLoginNeeded" /> property's name.
         /// </summary>
@@ -359,9 +358,9 @@ namespace JumpStreetMobile.Shared.Model
                 Set(IsLoginNeededPropertyName, ref _IsLoginNeeded, value);
             }
         }
-#endregion
+        #endregion
 
-#region public bool IsAuthenticated
+        #region public bool IsAuthenticated
         /// <summary>
         /// The <see cref="IsAuthenticated" /> property's name.
         /// </summary>
@@ -385,9 +384,9 @@ namespace JumpStreetMobile.Shared.Model
             }
         }
 
-#endregion //public bool IsAuthenticated
+        #endregion //public bool IsAuthenticated
 
-#region public bool ShowLogin
+        #region public bool ShowLogin
         /// <summary>
         /// The <see cref="ShowLogin" /> property's name.
         /// </summary>
@@ -414,11 +413,11 @@ namespace JumpStreetMobile.Shared.Model
                 Set(ShowLoginPropertyName, ref _ShowLogin, !_ShowLogin);
             }
         }
-#endregion //public bool ShowLogin
+        #endregion //public bool ShowLogin
 
         public bool IsAuthenticationRequired { get { return ApplicationCapabilities.IsAuthenticationRequired; } }
 
-#region Login/Logout methods
+        #region Login/Logout methods
         async public Task Login(string provider)
         {
             // If authentication is enabled and we're not authenticated yet
@@ -468,11 +467,11 @@ namespace JumpStreetMobile.Shared.Model
             }
         }
 
-#endregion Login/Logout
+        #endregion Login/Logout
 
-#endregion // Authentication Members
+        #endregion // Authentication Members
 
-#region Push Notification Members
+        #region Push Notification Members
         public IPushNotifications Notifier { get; set; }
 
         /// <summary>
@@ -480,7 +479,7 @@ namespace JumpStreetMobile.Shared.Model
         /// </summary>
         public bool IsPushNotificationRequired { get { return ApplicationCapabilities.IsPushNotificationRequired; } }
 
-#region public bool IsPushNotificationsRegistered
+        #region public bool IsPushNotificationsRegistered
         /// <summary>
         /// The <see cref="IsPushNotificationsRegistered" /> property's name.
         /// </summary>
@@ -557,9 +556,9 @@ namespace JumpStreetMobile.Shared.Model
                 Set(IsBusyPropertyName, ref _IsBusy, value);
             }
         }
-#endregion
+        #endregion
 
-#region TodoItem related members
+        #region TodoItem related members
 
         // To enable offline sync so that data is stored locally on the
         // device, use this declaration of TodoItemTable and
@@ -567,7 +566,7 @@ namespace JumpStreetMobile.Shared.Model
         // 2) Uncomment the table definition below 
         // 3) Uncomment calls to SyncTodoItemsViewModel() and the method itself
         // 4) Comment the other sync-based defintion of TodoItemTable
-#region public IMobileServiceSyncTable<TodoItem> TodoItemTable
+        #region public IMobileServiceSyncTable<TodoItem> TodoItemTable
 #if !OnlineOnly
         private IMobileServiceSyncTable<TodoItem> _TodoItemTable;
         public IMobileServiceSyncTable<TodoItem> TodoItemTable
@@ -581,7 +580,7 @@ namespace JumpStreetMobile.Shared.Model
             }
         }
 #endif
-#endregion
+        #endregion
 
         // To disable offline sync so that no data is stored locally and
         // all data operations happen live, use this definition
@@ -589,7 +588,7 @@ namespace JumpStreetMobile.Shared.Model
         // 2) Uncomment the table definition below 
         // 3) Comment out calls to SyncTodoItemsViewModel() and the method itself
         // 4) Comment the other non-sync defintion of TodoItemTable
-#region public IMobileServiceTable<TodoItem> TodoItemTable
+        #region public IMobileServiceTable<TodoItem> TodoItemTable
 #if OnlineOnly
         private IMobileServiceTable<TodoItem> _TodoItemTable;
         public IMobileServiceTable<TodoItem> TodoItemTable
@@ -603,9 +602,9 @@ namespace JumpStreetMobile.Shared.Model
             }
         }
 #endif
-#endregion
+        #endregion
 
-#region public ObservableCollection<TodoItemViewModel> TodoItems
+        #region public ObservableCollection<TodoItemViewModel> TodoItems
         ObservableCollection<TodoItemViewModel> _TodoItems = null;
         public ObservableCollection<TodoItemViewModel> TodoItems
         {
@@ -614,7 +613,7 @@ namespace JumpStreetMobile.Shared.Model
                 return _TodoItems;
             }
         }
-#endregion
+        #endregion
 
 #if !OnlineOnly
         // ToDo: Turn this into a generic method on the order of:
@@ -798,9 +797,9 @@ namespace JumpStreetMobile.Shared.Model
                 foreach (TodoItem todoItem in await TodoItemTable.Where(todoItem => !todoItem.Done).ToListAsync())
                 {
                     _TodoItems.Add(new TodoItemViewModel() { TodoItem = todoItem });
-                }                
+                }
             }
-        }
+        }    
 
 #region public TodoListViewModel TodoListViewModel
         /// <summary>

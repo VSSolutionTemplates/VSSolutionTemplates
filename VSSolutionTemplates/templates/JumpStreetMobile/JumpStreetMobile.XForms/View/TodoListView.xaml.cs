@@ -106,13 +106,16 @@ namespace JumpStreetMobile.XForms.View
                     }
                     else
                     {
-                        if (ApplicationCapabilities.ModeOfOperation == ModeOfOperation.OnlineOnly)
-                        {
-                            DisplayMessageDialog(new ShowMessageDialog() { Title = "Connectivity Error", Message = "Could not cocnnect to the app service.  Try again later once you have connectivity" });
-                        }
-                        else
-                            DisplayMessageDialog(new ShowMessageDialog() { Title = "Be Aware", Message = "Could not cocnnect to the app service so the application will run in offline mode." });
+                        if (ApplicationCapabilities.ModeOfOperation == ModeOfOperation.OnlineAndOffline)
+                            DisplayMessageDialog(new ShowMessageDialog() { Title = "Be Aware", Message = "Could not connect to the app service so the application will run in offline mode." });
                     }
+                }
+            }
+            catch (Exception e)
+            {
+                if (ApplicationCapabilities.ModeOfOperation == ModeOfOperation.OnlineOnly)
+                {
+                    DisplayMessageDialog(new ShowMessageDialog() { Title = "Connectivity Error", Message = "Could not connect to app service and ModeOfOperation is set to OnlineOnly so you will need to try again when network connectivity has been restored" });
                 }
             }
             finally
@@ -138,6 +141,9 @@ namespace JumpStreetMobile.XForms.View
         async void DisplayMessageDialog(ShowMessageDialog message)
         {
             await DisplayAlert(message.Title, message.Message, message.OkLabel == null ? "Ok" : message.OkLabel);
+
+            if (message.Title.ToLower().Contains("error"))
+                ContentHost.IsEnabled = false;
         }
 
         async void ReportPersistanceException(PersistanceException exception)
@@ -185,26 +191,6 @@ namespace JumpStreetMobile.XForms.View
         public void OnRefresh(object sender, EventArgs e)
         {
             Locator.Instance.TodoListViewModel.SyncCommand.Execute(null);
-
-            //var list = (ListView)sender;
-            //Exception error = null;
-            //try
-            //{
-            //    await RefreshItems(false, true);
-            //}
-            //catch (Exception ex)
-            //{
-            //    error = ex;
-            //}
-            //finally
-            //{
-            //    list.EndRefresh();
-            //}
-
-            //if (error != null)
-            //{
-            //    await DisplayAlert("Refresh Error", "Couldn't refresh data (" + error.Message + ")", "OK");
-            //}
         }
 
         async void OnLoginTapped(object sender, EventArgs args)

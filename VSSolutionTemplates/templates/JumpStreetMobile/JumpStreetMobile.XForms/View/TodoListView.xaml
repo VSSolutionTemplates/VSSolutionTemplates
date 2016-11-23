@@ -45,7 +45,7 @@
   appeared.  Without it, the 'new todo item' entry field would get scrolled
   up into the page title, not good.  Adding the ScrollView results in
   no auto scrolling which is perfect.-->
-  <ScrollView>
+  <ScrollView x:Name="ContentHost">
     <Grid>
       <Grid x:Name="OuterGrid" RowSpacing="0" ColumnSpacing="0" BackgroundColor="#5ABAFF" >
         <Grid.RowDefinitions>

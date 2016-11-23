@@ -264,8 +264,10 @@ namespace JumpStreetMobile.Shared.ViewModel
 
                 if (await Locator.Instance.IsOnline())
                     await Locator.Instance.SyncChanges();
-                else
-                    Messenger.Default.Send<ShowMessageDialog>(new ShowMessageDialog { Title = "Synchronization Failed", Message = "Server was unreachable. Are you connected to the Internet?", OkLabel = "Ok" });
+                else if (ApplicationCapabilities.ModeOfOperation == ModeOfOperation.OnlineOnly)
+                    Messenger.Default.Send(new ShowMessageDialog() { Title = "Connectivity Error", Message = "Could not connect to app service and ModeOfOperation is set to OnlineOnly so you will need to try again when network connectivity has been restored" });
+                else if (ApplicationCapabilities.ModeOfOperation == ModeOfOperation.OnlineAndOffline)
+                    Messenger.Default.Send(new ShowMessageDialog() { Title = "Be Aware", Message = "Could not connect to the app service so the application will run in offline mode." });
             }
             catch (Exception e)
             {

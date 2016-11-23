@@ -25,7 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\TodoItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\BooleanNegationConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\IAuthenticate.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\IConflictResolver.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ConflictResolver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\IPushNotifications.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TodoListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TodoItemViewModel.cs" />

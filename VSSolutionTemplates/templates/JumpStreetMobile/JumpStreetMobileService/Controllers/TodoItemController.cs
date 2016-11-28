@@ -10,7 +10,7 @@ using Microsoft.Azure.Mobile.Server.Config;
 using Microsoft.Azure.NotificationHubs;
 using System.Collections.Generic;
 using System.Security.Claims;
-using JumpStreetMobile.Shared.Model;
+using JumpStreetMobile.Model;
 
 namespace JumpStreetMobileService.Controllers
 {
@@ -80,7 +80,7 @@ namespace JumpStreetMobileService.Controllers
                     config.Services.GetTraceWriter().Error(ex.Message, null, "Push.SendAsync Error");
                 }
             }
-
+            
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 

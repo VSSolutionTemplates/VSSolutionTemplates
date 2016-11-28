@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="d69bebfa-abf1-4e0b-98da-4c68ecced532" Publisher="CN=azuremobileapps" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="13a70e4c-f828-4935-97d9-a34d54d8b243" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="d69bebfa-abf1-4e0b-98da-4c68ecced532" Publisher="CN=Craig" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="d69bebfa-abf1-4e0b-98da-4c68ecced532" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>JumpStreetMobile</DisplayName>
     <PublisherDisplayName>AzureMobileApp</PublisherDisplayName>

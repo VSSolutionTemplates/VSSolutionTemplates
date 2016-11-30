@@ -4,7 +4,8 @@ namespace JumpStreetMobileService.DataObjects
 {
     public class TodoItem : EntityData
     {
-        public string Name { get; set; }
-        public bool Done { get; set; }
+        public string Text { get; set; }
+
+        public bool Complete { get; set; }
     }
 }

@@ -6,9 +6,16 @@ using System.Web.Http.OData;
 using Microsoft.Azure.Mobile.Server;
 using JumpStreetMobileService.DataObjects;
 using JumpStreetMobileService.Models;
+using Microsoft.Azure.Mobile.Server.Config;
+using Microsoft.Azure.NotificationHubs;
+using System.Collections.Generic;
+using System.Security.Claims;
+using JumpStreetMobile.Model;
 
 namespace JumpStreetMobileService.Controllers
 {
+    // Uncomment to require authentication for this controller
+    //[Authorize]
     public class TodoItemController : TableController<TodoItem>
     {
         protected override void Initialize(HttpControllerContext controllerContext)
@@ -40,6 +47,40 @@ namespace JumpStreetMobileService.Controllers
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
         {
             TodoItem current = await InsertAsync(item);
+
+            if (ApplicationCapabilities.IsPushNotificationRequired)
+            {
+                // Get the settings for the server project.
+                HttpConfiguration config = this.Configuration;
+                MobileAppSettingsDictionary settings = this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
+
+                // Get the Notification Hubs credentials for the Mobile App.
+                string notificationHubName = settings.NotificationHubName;
+                string notificationHubConnection = settings.Connections[MobileAppSettingsKeys.NotificationHubConnectionString].ConnectionString;
+
+                // Create a new Notification Hub client.
+                NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
+
+                // Sending the message so that all template registrations that contain "messageParam"
+                // will receive the notifications. This includes APNS, GCM, WNS, and MPNS template registrations.
+                Dictionary<string, string> templateParams = new Dictionary<string, string>();
+                templateParams["messageParam"] = "'" + item.Name + "'" + " was added to the list.";
+
+                try
+                {
+                    // Send the push notification and log the results.
+                    var result = await hub.SendTemplateNotificationAsync(templateParams);
+
+                    // Write the success result to the logs.
+                    config.Services.GetTraceWriter().Info(result.State.ToString());
+                }
+                catch (System.Exception ex)
+                {
+                    // Write the failure result to the logs.
+                    config.Services.GetTraceWriter().Error(ex.Message, null, "Push.SendAsync Error");
+                }
+            }
+
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 

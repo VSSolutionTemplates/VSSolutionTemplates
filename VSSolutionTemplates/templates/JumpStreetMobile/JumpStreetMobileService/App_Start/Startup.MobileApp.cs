@@ -55,8 +55,8 @@ namespace JumpStreetMobileService
         {
             List<TodoItem> todoItems = new List<TodoItem>
             {
-                new TodoItem { Id = Guid.NewGuid().ToString(), Text = "First item", Complete = false },
-                new TodoItem { Id = Guid.NewGuid().ToString(), Text = "Second item", Complete = false },
+                new TodoItem { Id = Guid.NewGuid().ToString(), Name = "First item", Done = false },
+                new TodoItem { Id = Guid.NewGuid().ToString(), Name = "Second item", Done = false },
             };
 
             foreach (TodoItem todoItem in todoItems)

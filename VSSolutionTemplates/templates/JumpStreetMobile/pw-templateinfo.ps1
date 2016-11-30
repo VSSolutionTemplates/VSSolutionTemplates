@@ -42,7 +42,7 @@ Use this one-liner to figure out the include expression for the project name
 > Get-ChildItem VSSolutionTemplates\templates * -Recurse -File|select-string 'JumpStreetMobile' -SimpleMatch|Select-Object -ExpandProperty path -Unique|% { Get-Item $_ | Select-Object -ExpandProperty extension}|Select-Object -Unique|%{ Write-Host "'*$_'," -NoNewline }
 
 
-'.sln';'.vstemplate';'.csproj';'.bak';'.cs';'.xml';'.plist';'.projitems';'.shproj';'.xaml';'.config';'.pubxml';'.appxmanifest'
+'.sln';'.vstemplate';'.csproj';'.bak';'.cs';'.xml';'.plist';'.projitems';'.shproj';'.xaml';'.config';'.pubxml';'.appxmanifest';'.deployproj'
 
 Use this one-liner to figure out the guids in your template
 > Get-ChildItem .\VSSolutionTemplates\templates *.*proj -Recurse -File|Select-Object -ExpandProperty fullname -Unique|% { ([xml](Get-Content $_)).Project.PropertyGroup.ProjectGuid|Select-Object -Unique|%{ '({0}, {{"$ProjectId"}}, {{[System.Guid]::NewGuid()}},@("*.*proj")),' -f $_ }}
@@ -54,11 +54,11 @@ Use this one-liner to figure out the guids in your template
 ({059786BD-D4DA-4770-8624-13A84BFC97AC}, {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*proj")),
 ({6B0A711C-8401-4240-BA08-A8198EFC271E}, {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*proj")),
 ({209FA716-A7AD-4095-BD70-C8710FC66FA7}, {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*proj")),
-({68D82A27-F8EA-4550-9AC7-766CC4CA164E}, {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*proj")),
+({68D82A27-F8EA-4550-9AC7-766CC4CA164E}, {"$ProjectId"}, {[System.Guid]::NewGuid()},@("*.*deployproj")),
 
 
 use this one-liner to figure out the include statement for update-filename
 Get-ChildItem C:\temp\pean-waffle\dest\new3 *jumpstreetmobile* -Recurse -File|Select-Object -ExpandProperty extension -Unique|%{ write-host ( '''{0}'',' -f $_) -NoNewline }
 
-'.csproj','.bak','.projitems','.shproj','.cs'
+'.csproj','.bak','.projitems','.shproj','.cs','.deployproj'
 #>

@@ -24,10 +24,10 @@ namespace JumpStreetMobile.Model
         ///        (see http:...)
         ///     3) Remove any unwanted/unconfigured identity providers
         ///        (find _IdentityProviders dictionary below and comment out the unwated/unconfigured)
-        ///     4) Uncomment the [Authorize] attribute in the Service project for each controller that 
-        ///        requires authentication.  You could also place [Authorize] on controller methods
-        ///        instead of entire controller if that's what you need.
-        ///     5) Republish Service to Azure
+        ///     4) Enable server-side authentication capability by defining AuthenticationRequired
+        ///        as a conditional compliation symbol on the Build tab of the project properties on
+        ///        the backend app service (i.e. the project with 'Service' in its name)
+        ///     5) Republish the backend app service to Azure
         /// </remarks>
         static public bool IsAuthenticationRequired { get { return false; } }
 
@@ -65,7 +65,7 @@ namespace JumpStreetMobile.Model
         /// <remarks>
         /// To require push notification:
         ///     1) Change this property to return true
-        ///     2) Republish the Service project to Azure
+        ///     2) Republish the Service project to Azure to update this value in that code base 
         /// </remarks>
         static public bool IsPushNotificationRequired { get { return false; } }
         #endregion
@@ -78,7 +78,7 @@ namespace JumpStreetMobile.Model
         /// comments associated with each table declaration in Locator.cs
         /// 
         /// You don't need to republish the server project to Azure when you change this
-        /// setting since it is not currently referenced by server side.
+        /// setting since it is not currently referenced by the backend app service.
         /// </remarks>
         static public ModeOfOperation ModeOfOperation { get { return ModeOfOperation.OfflineOnly; } }
     }

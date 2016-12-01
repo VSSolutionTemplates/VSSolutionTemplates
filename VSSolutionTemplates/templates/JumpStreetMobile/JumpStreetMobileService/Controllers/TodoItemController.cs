@@ -14,8 +14,9 @@ using JumpStreetMobile.Model;
 
 namespace JumpStreetMobileService.Controllers
 {
-    // Uncomment to require authentication for this controller
-    //[Authorize]
+#if AuthenticationRequired
+    [Authorize]
+#endif
     public class TodoItemController : TableController<TodoItem>
     {
         protected override void Initialize(HttpControllerContext controllerContext)

@@ -560,12 +560,6 @@ namespace JumpStreetMobile.Model
 
         #region TodoItem related members
 
-        // To enable offline sync so that data is stored locally on the
-        // device, use this declaration of TodoItemTable and
-        // 1) Set ApplicationCapabilities.ModeOfOperation to OnlineAndOffline or OfflineOnly
-        // 2) Uncomment the table definition below 
-        // 3) Uncomment calls to SyncTodoItemsViewModel() and the method itself
-        // 4) Comment the other sync-based defintion of TodoItemTable
         #region public IMobileServiceSyncTable<TodoItem> TodoItemTable
 #if !OnlineOnly
         private IMobileServiceSyncTable<TodoItem> _TodoItemTable;
@@ -582,12 +576,6 @@ namespace JumpStreetMobile.Model
 #endif
         #endregion
 
-        // To disable offline sync so that no data is stored locally and
-        // all data operations happen live, use this definition
-        // 1) Set ApplicationCapabilities.ModeOfOperation to ModeOfOperation.OnlineOnly
-        // 2) Uncomment the table definition below 
-        // 3) Comment out calls to SyncTodoItemsViewModel() and the method itself
-        // 4) Comment the other non-sync defintion of TodoItemTable
         #region public IMobileServiceTable<TodoItem> TodoItemTable
 #if OnlineOnly
         private IMobileServiceTable<TodoItem> _TodoItemTable;
@@ -615,6 +603,7 @@ namespace JumpStreetMobile.Model
         }
         #endregion
 
+        #region Offline Sync code
 #if !OnlineOnly
         // ToDo: Turn this into a generic method on the order of:
         // Task SyncViewModel<T, U>(string queryId, IMobileServiceSyncTable<T> table, IMobileServiceTableQuery<U> query)
@@ -771,13 +760,15 @@ namespace JumpStreetMobile.Model
             await TodoItemTable.PurgeAsync(TodoItemTable.Where(todoItem => todoItem.Done));
         }
 #endif
+        #endregion
 
+        #region async public Task GetTodoItems()
         /// <summary>
         /// Loads the TodoItems property asynchronously because properties don't support async
         /// </summary>
         /// <returns>Returns all Todo items not marked as Done</returns>
         /// <remarks>
-        /// We use a method-based fetcher to fill the collection with data the mobile service 
+        /// We use a method-based fetcher to fill the collection with data in the mobile app 
         /// table because c# properties can't be async.  This method is typically called in the
         /// Appearing (Xamarin.Forms) or Loaded (Windows Xaml) methods of the View that is going
         /// to show the collection.
@@ -799,9 +790,10 @@ namespace JumpStreetMobile.Model
                     _TodoItems.Add(new TodoItemViewModel() { TodoItem = todoItem });
                 }
             }
-        }    
+        }
+        #endregion
 
-#region public TodoListViewModel TodoListViewModel
+        #region public TodoListViewModel TodoListViewModel
         /// <summary>
         /// The <see cref="TodoListViewModel" /> property's name.
         /// </summary>
@@ -827,8 +819,8 @@ namespace JumpStreetMobile.Model
                 Set(TodoListViewModelPropertyName, ref _TodoListViewModel, value);
             }
         }
-#endregion
+        #endregion
 
-#endregion // TodoItem related members
+        #endregion // TodoItem related members
     }
 }

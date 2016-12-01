@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="App_Start\Startup.MobileApp.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="DataObjects\TodoItem.cs" />
     <Compile Include="Models\JumpStreetMobileContext.cs" />
     <Compile Include="Startup.cs" />

@@ -307,6 +307,27 @@
 
       ],
       "properties": {
+        //// Uncomment the Push Notification Service credentials when you have the actual credentials
+        //// for service.  The deployment will fail if you uncomment and leave credentials blank or
+        //// provide invalid credentials with an error that probably say "Bad Request"
+        //"wnsCredential": {
+        //  "properties": {
+        //    "packageSid": "[parameters('wnsCredential').packageSid]",
+        //    "secretKey": "[parameters('wnsCredential').secretKey]"
+        //  }
+        //},
+        //"gcmCredential": {
+        //  "properties": {
+        //    "googleApiKey": "[parameters('gcmCredential').googleApiKey]"
+        //  }
+        //},
+        //"apnsCredential": {
+        //  "properties": {
+        //    // Thumbnail of .p12 cert.  You can get this by running this command:
+        //    // Get-PfxCertificate -filepath <path to .p12 file>
+        //    "certificateKey": "[parameters('apnsCredential').certificateKey]"
+        //  }
+        //}
       }
     }
   ]

@@ -220,9 +220,6 @@ namespace JumpStreetMobile.Model
         /// Syncs local data with server and vice versa
         /// </summary>
         /// <returns></returns>
-        /// <remarks>
-        /// This method also sets the IsOnline
-        /// </remarks>
         async public Task SyncChanges()
         {
 #if !OnlineOnly
@@ -508,7 +505,7 @@ namespace JumpStreetMobile.Model
 
         #region Connectivity Members
 
-        async public Task<bool> IsOnline()
+        async public Task<bool> IsMobileAppServiceReachable()
         {
             bool result = false;
 
@@ -517,7 +514,14 @@ namespace JumpStreetMobile.Model
                 var httpClient = new HttpClient();
                 var response = await httpClient.GetAsync(this.MobileService.MobileAppUri);
 
-                result = response.IsSuccessStatusCode;
+                // The question being answered by this method is if the service is reachable.
+                // The only reliable way I have found to answser that question consistently
+                // is to actually ping the service to see if you can reach it.
+                //
+                // This boolean check to see if status was success or if ping fails, did it
+                // fail because we arn't authenticated yet. If either are true we know we are
+                // connected.
+                result = response.IsSuccessStatusCode || response.StatusCode == System.Net.HttpStatusCode.Unauthorized;
             }
             catch (Exception e)
             {
@@ -526,11 +530,20 @@ namespace JumpStreetMobile.Model
             }
 
             // Set the dependent status property
-            OnlineStatus = result ? "Online" : "Local";
+            OnlineStatus = result && (!IsAuthenticationRequired || IsAuthenticated) ? "Online" : "Local";
 
             return result;
         }
 
+        async public Task<bool> IsConnected()
+        {
+            bool result = await IsMobileAppServiceReachable() && (!IsAuthenticationRequired || IsAuthenticated);
+
+            // Set the dependent status property
+            OnlineStatus = result ? "Online" : "Local";
+
+            return result;
+        }
         #endregion
 
         #region public bool IsBusy

@@ -185,8 +185,8 @@ namespace JumpStreetMobile.ViewModel
                 // Add item to bound ViewModel collection to keep it in sync and so ObservableCollection raises INPC event
                 Locator.Instance.TodoItems.Add(new TodoItemViewModel() { TodoItem = this.TodoItemViewModel.TodoItem });
 
-                // If connected then push changes to server but it won't pull any server updates
-                if (await Locator.Instance.IsOnline() && Locator.Instance.IsSyncEnabled && (Locator.Instance.IsAuthenticated || !Locator.Instance.IsAuthenticationRequired))
+                // If sync enabled and connected then push changes to server but it won't pull any server updates
+                if (Locator.Instance.IsSyncEnabled && await Locator.Instance.IsConnected())
                     await Locator.Instance.PushChanges();
 
                 // Reset UI in preparation for subsequent entries
@@ -221,7 +221,7 @@ namespace JumpStreetMobile.ViewModel
                 await Locator.Instance.TodoItemTable.UpdateAsync(todoItemViewModel.TodoItem);
 
                 // If connected then push changes to server but it won't pull any server updates
-                if (Locator.Instance.IsSyncEnabled && await Locator.Instance.IsOnline())
+                if (Locator.Instance.IsSyncEnabled && await Locator.Instance.IsConnected())
                     await Locator.Instance.PushChanges();
 
                 // Pause so UI can briefly show the checkmark
@@ -262,7 +262,7 @@ namespace JumpStreetMobile.ViewModel
             {
                 Locator.Instance.IsBusy = true;
 
-                if (await Locator.Instance.IsOnline())
+                if (await Locator.Instance.IsMobileAppServiceReachable())
                     await Locator.Instance.SyncChanges();
                 else if (ApplicationCapabilities.ModeOfOperation == ModeOfOperation.OnlineOnly)
                     Messenger.Default.Send(new ShowMessageDialog() { Title = "Connectivity Error", Message = "Could not connect to app service and ModeOfOperation is set to OnlineOnly so you will need to try again when network connectivity has been restored" });

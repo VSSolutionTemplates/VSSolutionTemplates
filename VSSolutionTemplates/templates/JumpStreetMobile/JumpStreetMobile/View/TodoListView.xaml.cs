@@ -92,7 +92,7 @@ namespace JumpStreetMobile.View
 
                 if (ApplicationCapabilities.ModeOfOperation != ModeOfOperation.OfflineOnly)
                 {
-                    if (await Locator.Instance.IsOnline())
+                    if (await Locator.Instance.IsMobileAppServiceReachable())
                     {
                         if (Locator.Instance.IsPushNotificationRequired &&
                             (!ApplicationCapabilities.IsAuthenticationRequired || Locator.Instance.IsAuthenticated))
@@ -101,7 +101,7 @@ namespace JumpStreetMobile.View
                         // Now that offline data have been fetched and bound, attempt to sync data with server.
                         // Note: Call to Locator.Instance.SyncChanges() after you call Locator.Instance.GetTodoItems()
                         // so page is fully active while sync executing asynchronously
-                        if (Locator.Instance.IsSyncEnabled && (Locator.Instance.IsAuthenticated || !Locator.Instance.IsAuthenticationRequired))
+                        if (Locator.Instance.IsSyncEnabled && await Locator.Instance.IsConnected())
                             await Locator.Instance.SyncChanges();
                     }
                     else

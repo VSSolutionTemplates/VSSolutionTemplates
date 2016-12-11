@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appName": {
-      "value": "JumpStreetMobile"
+      "value": "JumpStreetMobile" // Must be a valid and unique Azure App Service name
     },
     "sqlServerAdminLogin": {
-      "value": ""
+      "value": "" // Required value
     },
     "sqlServerAdminPassword": {
-      "value": ""
+      "value": "" // Required value
     },
     "microsoftAuth": {
       "value": {
@@ -45,20 +45,20 @@
     // Notification Hub Credentials (for Windows, Google, and Apple push notification services)
     "wnsCredential": {
       "value": {
-        "packageSid": "",
+        "packageSid": "", // If you set these credentials you have to uncomment wnsCredential in Notification Hub configuration section
         "secretKey": ""
       }
     },
     "gcmCredential": {
       "value": {
-        "googleApiKey": ""
+        "googleApiKey": "" // If you set these credentials you have to uncomment gcmCredential in Notification Hub configuration section
       }
     },
     "apnsCredential": {
       "value": {
-        // Thumbnail of .p12 cert.  You can get this by running this command:
-        // Get-PfxCertificate -filepath <path to .p12 file>
-        "certificateKey": ""
+        // Thumbnail of .p12 cert which you can get by running: Get-PfxCertificate -filepath <path to .p12 file>
+
+        "certificateKey": "" // If you set these credentials you have to uncomment apnsCredential in Notification Hub configuration section
       }
     }
   }

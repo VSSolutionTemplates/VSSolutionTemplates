@@ -24,7 +24,7 @@ namespace JumpStreetMobile.Model
         ///        (see http:...)
         ///     3) Remove any unwanted/unconfigured identity providers
         ///        (find _IdentityProviders dictionary below and comment out the unwated/unconfigured)
-        ///     4) Enable server-side authentication capability by defining AuthenticationRequired
+        ///     4) Enable server-side authentication capability by defining AUTHENTICATION_REQUIRED
         ///        as a conditional compliation symbol on the Build tab of the project properties on
         ///        the backend app service (i.e. the project with 'Service' in its name)
         ///     5) Republish the backend app service to Azure

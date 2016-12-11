@@ -14,7 +14,7 @@ using JumpStreetMobile.Model;
 
 namespace JumpStreetMobileService.Controllers
 {
-#if AuthenticationRequired
+#if AUTHENTICATION_REQUIRED
     [Authorize]
 #endif
     public class TodoItemController : TableController<TodoItem>

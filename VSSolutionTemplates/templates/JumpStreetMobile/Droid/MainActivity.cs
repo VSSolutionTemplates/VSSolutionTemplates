@@ -115,17 +115,11 @@ namespace JumpStreetMobile.Droid
 
                 Locator.Instance.IsPushNotificationsRegistered = true;
             }
-            catch (Java.Net.MalformedURLException)
-            {
-                Locator.Instance.IsPushNotificationsRegistered = false;
-
-                CreateAndShowDialog("There was an error creating the Mobile Service. Verify the URL", "Error");
-            }
             catch (Exception e)
             {
                 Locator.Instance.IsPushNotificationsRegistered = false;
 
-                CreateAndShowDialog(e.Message, "Error");
+                CreateAndShowDialog("Registration for push notifications failed:\n\n" + e.Message + "\n\nIf this app is running in an emmulator, make sure that you are deploying to or debugging on a virtual device that has Google APIs set as the target", "Error - Push Registration Failed");
             }
         }
         #endregion

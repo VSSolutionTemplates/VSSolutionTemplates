@@ -11,6 +11,9 @@
     "sqlServerAdminPassword": {
       "value": "" // Required value
     },
+    "isAuthenticationEnabled": {
+      "value": false
+    },
     "microsoftAuth": {
       "value": {
         "clientId": "",

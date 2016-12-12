@@ -38,6 +38,12 @@
         "description": "The type of database to create. The available options are: Web, Business, Basic, Standard, and Premium."
       }
     },
+    "isAuthenticationEnabled": {
+      "type": "bool",
+      "metadata": {
+        "description": "Indicates if authentication should be enabled"
+      }
+    },
     "sqlDatabaseCollation": {
       "type": "string",
       "defaultValue": "SQL_Latin1_General_CP1_CI_AS",
@@ -198,7 +204,7 @@
           ],
           "properties": {
             // Set general auth settings
-            "enabled": false, // Set to true if you want to App Service Authentication to "On", otherwise set it to false
+            "enabled": "[parameters('isAuthenticationEnabled')]",
             "unauthenticatedClientAction": 0,
             "tokenStoreEnabled": true,
             "defaultProvider": 0,

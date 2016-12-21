@@ -329,6 +329,9 @@
         //},
         //"apnsCredential": {
         //  "properties": {
+        //    This deployment setting is not yet working and can't be used.  As a workaround, use
+        //    the portal to first connect up to existing notification hub and then configure
+        //    the apns by hand.  Hope to have this fixed soon.
         //    // Thumbnail of .p12 cert.  You can get this by running this command:
         //    // Get-PfxCertificate -filepath <path to .p12 file>
         //    "certificateKey": "[parameters('apnsCredential').certificateKey]"

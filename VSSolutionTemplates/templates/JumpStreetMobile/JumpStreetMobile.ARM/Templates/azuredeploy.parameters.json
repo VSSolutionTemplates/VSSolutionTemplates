@@ -61,7 +61,9 @@
       "value": {
         // Thumbnail of .p12 cert which you can get by running: Get-PfxCertificate -filepath <path to .p12 file>
 
-        "certificateKey": "" // If you set these credentials you have to uncomment apnsCredential in Notification Hub configuration section
+        "apnsCertificate": "", // If you set these credentials you have to uncomment apnsCredential in Notification Hub configuration section
+        "certificateKey": "",
+        "endpoint": ""
       }
     }
   }

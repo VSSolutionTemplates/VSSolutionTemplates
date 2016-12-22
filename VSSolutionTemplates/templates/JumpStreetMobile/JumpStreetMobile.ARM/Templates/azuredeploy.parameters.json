@@ -3,7 +3,8 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appName": {
-      "value": "JumpStreetMobile" // Must be a valid and unique Azure App Service name
+      "value": "JumpStreetMobile" // Must make a valid service name as <appName>.azurewebsites.net
+                                  // or else later steps of deployment and publish will fail
     },
     "sqlServerAdminLogin": {
       "value": "" // Required value
@@ -48,21 +49,29 @@
     // Notification Hub Credentials (for Windows, Google, and Apple push notification services)
     "wnsCredential": {
       "value": {
-        "packageSid": "", // If you set these credentials you have to uncomment wnsCredential in Notification Hub configuration section
+        "packageSid": "", // If you set this credential you have to uncomment wnsCredential in Notification Hub configuration section
         "secretKey": ""
       }
     },
     "gcmCredential": {
       "value": {
-        "googleApiKey": "" // If you set these credentials you have to uncomment gcmCredential in Notification Hub configuration section
+        // Copy the SENDER_ID here ______ and also use it to replace "<product number>" in MainActivities.cs
+        "googleApiKey": "" // If you set this credential you have to uncomment gcmCredential in Notification Hub configuration section
       }
     },
     "apnsCredential": {
+      // If you set this credential you have to uncomment apnsCredential in Notification Hub configuration section
       "value": {
-        // Thumbnail of .p12 cert which you can get by running: Get-PfxCertificate -filepath <path to .p12 file>
-
-        "apnsCertificate": "", // If you set these credentials you have to uncomment apnsCredential in Notification Hub configuration section
+        // Set apnsCertificate to Apple Push Notification certificate converted to base 64 string.
+        // You can convert the certificate a base 64 string by using these two PowerShell commands:
+        //     $fileContentBytes = get-content ‘MyPushCert.p12’ -Encoding Byte
+        //     [System.Convert]::ToBase64String($fileContentBytes) | Out-File ‘MyPushCertAsBase64String.txt’
+        "apnsCertificate": "",
+        // Set to the password that was set when the .p12 cert was created on the Mac (via export)
         "certificateKey": "",
+        // Should be set to either:
+        //     gateway.sandbox.push.apple.com  // for dev cert
+        //     gateway.push.apple.com          // for production cert
         "endpoint": ""
       }
     }

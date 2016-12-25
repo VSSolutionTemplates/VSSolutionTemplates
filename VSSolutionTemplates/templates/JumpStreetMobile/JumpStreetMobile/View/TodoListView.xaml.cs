@@ -79,9 +79,8 @@ namespace JumpStreetMobile.View
             {
                 Locator.Instance.IsBusy = true;
 
-#if WINDOWS_APP
-                AddRightHandGutter();
-#endif
+                if (App.Platform == "WINDOWS_APP" || App.Platform == "WINDOWS_UWP")
+                    AddRightHandGutter(App.Platform);
 
                 await Locator.Instance.GetTodoItems();
 
@@ -124,12 +123,14 @@ namespace JumpStreetMobile.View
             }
         }
 
-        void AddRightHandGutter()
+        void AddRightHandGutter(string platform)
         {
+            double gutter = (platform == "WINDOWS_APP" ? 12 : 8);
+
             OuterGrid.ColumnDefinitions = new ColumnDefinitionCollection
             {
                 new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
-                new ColumnDefinition { Width = new GridLength(15, GridUnitType.Absolute) }
+                new ColumnDefinition { Width = new GridLength(gutter, GridUnitType.Absolute) }
             };
 
             OuterGrid.Children.Add(new ContentView

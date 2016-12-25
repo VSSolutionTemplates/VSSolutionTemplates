@@ -32,7 +32,7 @@ namespace UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new JumpStreetMobile.App());
+            LoadApplication(new JumpStreetMobile.App("WINDOWS_UWP"));
         }
 
         // Define a authenticated user.

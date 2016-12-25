@@ -34,7 +34,7 @@ namespace WinApp
         {
             this.InitializeComponent();
 
-            LoadApplication(new JumpStreetMobile.App());
+            LoadApplication(new JumpStreetMobile.App("WINDOWS_APP"));
         }
 
         // Define a authenticated user.

@@ -3,15 +3,19 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appName": {
-      "value": "JumpStreetMobile" // Must make a valid service name as <appName>.azurewebsites.net
-                                  // or else later steps of deployment and publish will fail
+      "value": "JumpStreetMobile" // Required value, must be valid service name that will later
+                                  // be deployed as <appName>.azurewebsites.net
     },
     "sqlServerAdminLogin": {
-      "value": "" // Required value
+      "value": "" // Required value, must be valid administrator account name ("admin" is invalid)
     },
     "sqlServerAdminPassword": {
-      "value": "" // Required value
+      "value": "" // Required value, must meet password strength requirements
     },
+    // ------
+    // If your app does not require authentication or push notifications, you can stop here and set
+    // ApplicationCapabilities.ModeOfOperation to ModeOfOperation.OfflineOnly, deploy, publish, run 
+    // ------
     "isAuthenticationEnabled": {
       "value": false
     },

@@ -115,7 +115,7 @@
         "secretKey": null
       },
       "metadata": {
-        "description": "Windows Notification Service credentials"
+        "description": "Windows Notification Service (WNS) credentials"
       }
     },
     "gcmCredential": {
@@ -124,7 +124,7 @@
         "googleApiKey": null
       },
       "metadata": {
-        "description": "Windows Notification Service credentials"
+        "description": "Google Firebase Cloud Messaging Service (FCM) credentials"
       }
     },
     "apnsCredential": {
@@ -135,7 +135,7 @@
         "endpoint": null
       },
       "metadata": {
-        "description": "Windows Notification Service credentials"
+        "description": "Apple Push Notification Service (APNS) credentials"
       }
     }
   },
@@ -315,20 +315,20 @@
 
       ],
       "properties": {
-        //// Uncomment the Push Notification Service credentials when you have the actual credentials
-        //// for service.  The deployment will fail if you uncomment and leave credentials blank or
-        //// provide invalid credentials with an error that probably say "Bad Request"
-        //"wnsCredential": {
-        //  "properties": {
-        //    "packageSid": "[parameters('wnsCredential').packageSid]",
-        //    "secretKey": "[parameters('wnsCredential').secretKey]"
-        //  }
-        //},
-        //"gcmCredential": {
-        //  "properties": {
-        //    "googleApiKey": "[parameters('gcmCredential').googleApiKey]"
-        //  }
-        //},
+        "wnsCredential": {
+          "properties": {
+            "packageSid": "[parameters('wnsCredential').packageSid]",
+            "secretKey": "[parameters('wnsCredential').secretKey]"
+          }
+        },
+        "gcmCredential": {
+          "properties": {
+            "googleApiKey": "[parameters('gcmCredential').googleApiKey]"
+          }
+        }
+        //// Uncomment the APNS Service credentials when you have the actual credentials for
+        //// service.  The deployment will fail if you uncomment and leave credentials blank
+        //// or provide invalid credentials with an error that probably say "Bad Request"
         //"apnsCredential": {
         //  "properties": {
         //    "apnsCertificate": "[parameters('apnsCredential').apnsCertificate]",

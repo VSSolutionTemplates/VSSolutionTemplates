@@ -11,10 +11,14 @@ namespace JumpStreetMobile
 {
 	public partial class App : Application
 	{
-		public App ()
+        public static string Platform = null;
+
+        public App (string platform = null)
 		{
-			// The root page of your application
-			MainPage = new TodoListView();
+            Platform = platform;
+
+            // The root page of your application
+            MainPage = new TodoListView();
 		}
 
 		protected override void OnStart ()

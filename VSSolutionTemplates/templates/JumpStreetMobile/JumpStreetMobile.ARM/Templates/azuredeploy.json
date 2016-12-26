@@ -315,20 +315,20 @@
 
       ],
       "properties": {
-        "wnsCredential": {
-          "properties": {
-            "packageSid": "[parameters('wnsCredential').packageSid]",
-            "secretKey": "[parameters('wnsCredential').secretKey]"
-          }
-        },
-        "gcmCredential": {
-          "properties": {
-            "googleApiKey": "[parameters('gcmCredential').googleApiKey]"
-          }
-        }
-        //// Uncomment the APNS Service credentials when you have the actual credentials for
+        //// Uncomment the service credentials when you have the actual credentials for that
         //// service.  The deployment will fail if you uncomment and leave credentials blank
         //// or provide invalid credentials with an error that probably say "Bad Request"
+        //"wnsCredential": {
+        //  "properties": {
+        //    "packageSid": "[parameters('wnsCredential').packageSid]",
+        //    "secretKey": "[parameters('wnsCredential').secretKey]"
+        //  }
+        //},
+        //"gcmCredential": {
+        //  "properties": {
+        //    "googleApiKey": "[parameters('gcmCredential').googleApiKey]"
+        //  }
+        //},
         //"apnsCredential": {
         //  "properties": {
         //    "apnsCertificate": "[parameters('apnsCredential').apnsCertificate]",

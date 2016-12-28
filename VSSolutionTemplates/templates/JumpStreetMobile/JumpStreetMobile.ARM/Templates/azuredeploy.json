@@ -72,7 +72,7 @@
       "type": "object",
       "defaultValue": {
         "clientId": null,
-        "issuer": null
+        "issuerUrl": null
       },
       "metadata": {
         "description": "Azure Active Directory authentication settings"
@@ -213,7 +213,7 @@
 
             // Azure Active Directory
             "clientId": "[parameters('aadAuth').clientId]",
-            "issuer": "[parameters('aadAuth').issuer]",
+            "issuer": "[parameters('aadAuth').issuerUrl]",
 
             // Google
             "googleClientId": "[parameters('googleAuth').googleClientId]",

@@ -46,7 +46,7 @@
     "aadAuth": {
       "value": {
         "clientId": "",
-        "issuer": ""
+        "issuerUrl": ""
       }
     },
 

@@ -1,3 +1,6 @@
+# Web Deploy files since each cloner will want their own deployment
+*.pubxml
+
 *.vsix  
 OutputRoot/
 ## Ignore Visual Studio temporary files, build results, and

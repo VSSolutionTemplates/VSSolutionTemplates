@@ -1,7 +1,5 @@
 ﻿#if !SERVER_SIDE
 using Microsoft.WindowsAzure.MobileServices;
-//using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
-//using Microsoft.WindowsAzure.MobileServices.Sync;
 #endif
 using System;
 using System.Collections.Generic;
@@ -20,14 +18,16 @@ namespace JumpStreetMobile.Model
         /// <remarks>
         /// To require authentication:
         ///     1) Change this property to return true
-        ///     2) Configure one or more identity providers in Azure and the providers portal
-        ///        (see http:...)
+        ///     2) Register this app with one or more identity providers and copy the app id and 
+        ///        app secret to azuredeploy.parameters.json in the ARM project
         ///     3) Remove any unwanted/unconfigured identity providers
         ///        (find _IdentityProviders dictionary below and comment out the unwated/unconfigured)
         ///     4) Enable server-side authentication capability by defining AUTHENTICATION_REQUIRED
-        ///        as a conditional compliation symbol on the Build tab of the project properties on
-        ///        the backend app service (i.e. the project with 'Service' in its name).  Its
-        ///        important to do this for both the Debug and Release configurations!
+        ///        as a conditional compliation symbol on the Build tab of the project properties of
+        ///        the backend app service (i.e. the project with 'Service' in its name).  Make sure
+        ///        you choose "All Configurations" from the Configuration dropdown first before you
+        ///        add AUTHENTICATION_REQUIRED so it will be set for all configurations that get
+        ///        published to server.
         ///     5) Republish the backend app service to Azure
         /// </remarks>
         static public bool IsAuthenticationRequired { get { return false; } }
@@ -75,9 +75,6 @@ namespace JumpStreetMobile.Model
         /// Specifies what mode of operation is required: Online-Only, Online & Offline, Offline only
         /// </summary>
         /// <remarks>
-        /// When you change the value of this property follow the directions in the 
-        /// comments associated with each table declaration in Locator.cs
-        /// 
         /// You don't need to republish the server project to Azure when you change this
         /// setting since it is not currently referenced by the backend app service.
         /// </remarks>

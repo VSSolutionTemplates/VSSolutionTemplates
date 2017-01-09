@@ -64,7 +64,12 @@
       }
     },
     "apnsCredential": {
-      // If you set this credential you have to uncomment apnsCredential in Notification Hub configuration section
+      // If you configure this credential you have to uncomment apnsCredential in the Notification
+      // Hub configuration section of the azuredeploy.json file
+      //
+      // Note: The value in the Identity field on the iOS Application tab of the iOS project settings
+      //       is the Bundle ID that must be used when creating the certificate for push notification
+      //       on the Mac
       "value": {
         // Set apnsCertificate to Apple Push Notification certificate converted to base 64 string.
         // You can convert the certificate a base 64 string by using these two PowerShell commands:

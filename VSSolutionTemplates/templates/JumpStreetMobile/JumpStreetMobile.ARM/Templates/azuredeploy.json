@@ -315,9 +315,10 @@
 
       ],
       "properties": {
-        //// Uncomment the service credentials when you have the actual credentials for that
-        //// service.  The deployment will fail if you uncomment and leave credentials blank
-        //// or provide invalid credentials with an error that probably say "Bad Request"
+        //// Uncomment the service credentials below only after you have set the actual credentials
+        //// in the parameter file otherwise, the deployment will likely fail with an error that
+        //// says "Bad Request".  You might also see that same error if you provide invalid
+        //// credentials.
         //"wnsCredential": {
         //  "properties": {
         //    "packageSid": "[parameters('wnsCredential').packageSid]",

@@ -1,6 +1,5 @@
 # VSSolutionTemplates
-VSSolutionTemplates are large grained solution accelerators.  They take the form of Visual Studio project templates
-that generate Visual Studio Solutions consisting of multiple integrated sub-projects.  These sub-projects have been
+VSSolutionTemplates are large grained solution accelerators.  They take the form of Visual Studio project templates that generate Visual Studio Solutions consisting of multiple integrated sub-projects.  These sub-projects have been
 specifically designed to create a holistic solution baseline that can be used as-is or customized and extended to
 quickly tailor a given solution to the needs of a particular application.  
 

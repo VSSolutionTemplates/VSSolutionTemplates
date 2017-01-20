@@ -14,7 +14,7 @@ configuration required
 * Application capabilities can be turned on or off individually by simple configuration rather than requiring a coding exercise
 	* Offline Sync
 	* Authentication
-	*Push Notifications
+	* Push Notifications
 
 Unlike the current mobile app Quickstart in the Azure portal, with JumpStreetMobile there is no need to reinvent the wheel 
 for each new mobile app or perform tedious and error-prone copy & paste operations from the Azure Mobile app documentation.
@@ -22,8 +22,10 @@ for each new mobile app or perform tedious and error-prone copy & paste operatio
 You can use JumpStreetMobile as a starting point for your next mobile application or as a sample app that shows how all the 
 major features of Azure App Service Mobile Apps are integrated.
 
-# To Try It
-Get the latest .vsix from [here](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/build/artifacts)<br/>
+# How To Try It
+You don't have to clone this repo or study its code to quickly try JumpStreetMobile. All you have to do is get the latest .vsix
+by click the ]VSSolutionTemplates.vsix](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/build/artifacts) link
+from [here](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/build/artifacts)<br/>
 **Important!!!**  The .vsix will download as a .zip so you will have to rename it to .vsix and then double-click it to
 install it in Visual Studio.
 

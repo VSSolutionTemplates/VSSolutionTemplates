@@ -25,13 +25,14 @@ major features of Azure App Service Mobile Apps are integrated.
 # How To Try It
 You don't have to clone this repo or study its code to try JumpStreetMobile. All you have to do is get the latest .vsix
 by clicking the [VSSolutionTemplates.vsix](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/build/artifacts) link
-from [here](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/build/artifacts) and install the JumpStreetMobile
-prerequisites if you haven't already (see below).<br/>
+from [here](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/build/artifacts) and double-click it to install
+in Visual Studio.  If you don't have the JumpStreetMobile prerequisites listed below installed you will need to install them
+first and then install the .vsix.<br/>
 
 **Important!!!**  The .vsix will download as a .zip so you will have to rename it to .vsix and then double-click it to
 install it in Visual Studio.
 
-### JumpStree Prerequisites
+### JumpStreeMobile Prerequisites
 * Visual Studio 2015 Community or Enterprise (VS 2017 may work but hasn't been tested)
 * Azure SDK 2.9 or later (earlier versions might work but weren't tested)
 * Install SQLite runtime for Windows clients
@@ -41,8 +42,8 @@ install it in Visual Studio.
 		* http://www.sqlite.org/2016/sqlite-wp81-winrt-3120200.vsix
 	* UWP
 		* http://sqlite.org/2016/sqlite-uwp-3120200.vsix
-
-	**Note:** If you see broken references in the Windows projects (they show up yellow), they you need to update those
+* Update any broken library references in the Windows projects:
+	**Note:** If you see broken references in the Windows projects (they show up yellow), then you need to update those
 	references to point to the local libraries by right-clicking References > Add Reference in each Windows project and
 	expand the Windows folder > Extensions. Then enable the appropriate SQLite for Windows SDK along with the Visual 
 	C++ 2013 Runtime for Windows SDK. The SQLite SDK names vary slightly with each Windows platform.

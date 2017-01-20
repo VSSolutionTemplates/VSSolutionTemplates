@@ -25,7 +25,8 @@ major features of Azure App Service Mobile Apps are integrated.
 # How To Try It
 You don't have to clone this repo or study its code to try JumpStreetMobile. All you have to do is get the latest .vsix
 by clicking the [VSSolutionTemplates.vsix](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/build/artifacts) link
-from [here](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/build/artifacts)<br/>
+from [here](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/build/artifacts).<br/>
+
 **Important!!!**  The .vsix will download as a .zip so you will have to rename it to .vsix and then double-click it to
 install it in Visual Studio.
 

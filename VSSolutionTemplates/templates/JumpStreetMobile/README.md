@@ -11,7 +11,8 @@ configuration required
 	* Modern authentication (Facebook, Twitter, Microsoft, Google, Azure Active Directory)
 	* Push notifications (Apple, Google, Windows -- Coming soon: Amazon, Baidu (Android China))
 	* ARM Template that makes your solution DevOps ready and service creation can be done in Visual Studio
-* Application capabilities can be turned on or off individually by simple configuration rather than requiring a coding exercise
+* Mobile application capabilities can be turned on or off individually by simple configuration rather than
+requiring a coding exercise
 	* Offline Sync
 	* Authentication
 	* Push Notifications

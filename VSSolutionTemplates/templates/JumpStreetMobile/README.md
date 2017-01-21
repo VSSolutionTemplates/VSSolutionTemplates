@@ -43,7 +43,7 @@ them in order to successfully build the solution.
 		* http://www.sqlite.org/2016/sqlite-wp81-winrt-3120200.vsix
 	* UWP
 		* http://sqlite.org/2016/sqlite-uwp-3120200.vsix
-* Update any broken library references in the Windows projects:
+* Update any broken library references in the Windows projects: <br/>
 	**Note:** If you see broken references in the Windows projects (they show up yellow), then you need to update those
 	references to point to the local libraries by right-clicking References > Add Reference in each Windows project and
 	expand the Windows folder > Extensions. Then enable the appropriate SQLite for Windows SDK along with the Visual 

@@ -30,8 +30,8 @@ from [here](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/bu
 have to rename the installer from "VSSolutionTemplates.zip" to "VSSolutionTemplates.vsix" and then simply double-click it to
 get it installed in Visual Studio.  
 
-**IMPORTANT** If you don't have the JumpStreetMobile prerequisites listed below installed you will need
-to install them first and then install the .vsix.<br/>
+**IMPORTANT** If you don't already have the JumpStreetMobile prerequisites listed below installed, you'll need to install
+them in order to successfully build the solution.
 
 ### JumpStreeMobile Prerequisites
 * Visual Studio 2015 Community or Enterprise (VS 2017 may work but hasn't been tested)
@@ -65,14 +65,14 @@ is outside the scope of what a solution template can target and automate!  Somed
 ### Footnote
 VSSolutionTemplates is built on top of another open source project called [pecan-waffle](https://github.com/ligershark/pecan-waffle).
 Pecan-waffle a self-contained command line utility that can be used to easily create and share Visual Studio project templates
-and item templates.  It allows you to take an arbitary Visual Studio project and turn it into a Vsisual Studio project template
+and item templates.  It allows you to take an arbitrary Visual Studio project and turn it into a Visual Studio project template
 without the need to make any special modifications to the source project.  
 
 In contrast to pecan-waffle, the standard approach for creating project templates requires you to modify the project which breaks
-it so you can nolong run or test that code base. The whole idea of pecan-waffle is that you can keep you source project in whatever
+it so you can no long run or test that code base. The whole idea of pecan-waffle is that you can keep you source project in whatever
 format you need to develop and test it and then use pecan-waffle to transform the source project into an actual Visual Studio
 project template.
 
-While pecan-waffle's approach is a significant benefit for a signle project solution, its an absolute necessity for large grained
+While pecan-waffle's approach is a significant benefit for a single project solution, its an absolute necessity for large grained
 solutions like VSSoluitonTemplates due to their multiple sub-projects and their tight integration.  As a practical matter, I would
 not have been able to build VSSoluitonTemplates without pecan-waffle.

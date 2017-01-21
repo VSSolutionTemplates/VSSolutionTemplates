@@ -63,7 +63,7 @@ Watch [this short video](http://myshortvid) to see just how easy it is to instal
 
 Watch [this much longer video](http://mylongervid) to see how to register your app with the authentication and push 
 notification providers (Facebook, Twitter, Google, Microsoft, Apple, etc.).  Sorry, configuring those developer portals
-is outside the scope of what a solution template can target and automate!  Someday maybe.
+is beyond what a solution template can target and automate for you!  Someday maybe.
 
 ### Footnote
 VSSolutionTemplates is built on top of another open source project called [pecan-waffle](https://github.com/ligershark/pecan-waffle).

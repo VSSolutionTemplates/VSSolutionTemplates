@@ -61,7 +61,7 @@ Watch [this much longer video](http://mylongervid) to see how to register your a
 Twitter, Google, Microsoft, Apple, etc.).  Sorry, configuring those developer portals is outside the scope of what a solution 
 template can target and automate!  Someday maybe.
 
-# Footnote
+### Footnote
 VSSolutionTemplates is built on top of another open source project called [pecan-waffle](https://github.com/ligershark/pecan-waffle).
 Pecan-waffle a self-contained command line utility that can be used to easily create and share Visual Studio project templates
 and item templates.  It allows you to take an arbitary Visual Studio project and turn it into a Vsisual Studio project template

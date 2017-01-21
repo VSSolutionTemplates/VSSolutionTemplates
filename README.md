@@ -19,7 +19,7 @@ Template.
 At the moment, there is only one solution template ([JumpStreetMobile](https://github.com/VSSolutionTemplates/VSSolutionTemplates/tree/master/VSSolutionTemplates/templates/JumpStreetMobile)) 
 but more are being planned.  Stay tuned!
 
-# Footnote
+### Footnote
 VSSolutionTemplates is built on top of another open source project called [pecan-waffle](https://github.com/ligershark/pecan-waffle).
 Pecan-waffle a self-contained command line utility that can be used to easily create and share Visual Studio project templates
 and item templates.  It allows you to take an arbitary Visual Studio project and turn it into a Vsisual Studio project template

@@ -1,12 +1,12 @@
 # What is JumpStreetMobile?
 JumpStreetMobile is an application accelerator for Azure App Service Mobile Apps.
 
-The accelerator is captured in a Visual Studio project template that you can use to create a full-featured cross platform 
+The accelerator is captured in a Visual Studio project template that you can use to create a full-featured cross-platform 
 Azure mobile app that features:
 * Traditional "File | New Project" approach for an entirely Visual Studio creation experience, no Azure portal creation or 
 configuration required
 * A ready to run app with all these key mobile app capabilities completely integrated:
-	* Cross platform client apps (iOS, Android, Windows UWP, Win 8.1, Win 8.1 Phone)
+	* Cross-platform client apps (iOS, Android, Windows UWP, Win 8.1, Win 8.1 Phone)
 	* Offline data sync with conflict resolution
 	* Modern authentication (Facebook, Twitter, Microsoft, Google, Azure Active Directory)
 	* Push notifications (Apple, Google, Windows -- Coming soon: Amazon, Baidu (Android China))
@@ -56,6 +56,9 @@ them in order to successfully build the solution.
 
 
 # Video
+These two videos will show you everything you need to know to configure, deploy and run a fully featured, cross-platform
+Azure mobile application that you can use as an accelerated starting point for your next mobile app.
+
 Watch [this short video](http://myshortvid) to see just how easy it is to install and use JumpStreetMobile.
 
 Watch [this much longer video](http://mylongervid) to see how to register your app with the authentication and push 

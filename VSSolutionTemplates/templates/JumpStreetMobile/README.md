@@ -30,7 +30,7 @@ from [here](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/bu
 have to rename the installer from "VSSolutionTemplates.zip" to "VSSolutionTemplates.vsix" and then simply double-click it to
 get it installed in Visual Studio.  
 
-**IMPORTANT** If you don't already have the JumpStreetMobile prerequisites listed below installed, you'll need to install
+**IMPORTANT:** If you don't already have the JumpStreetMobile prerequisites listed below installed, you'll need to install
 them in order to successfully build the solution.
 
 ### JumpStreeMobile Prerequisites
@@ -65,7 +65,7 @@ Watch [this much longer video](http://mylongervid) to see how to register your a
 notification providers (Facebook, Twitter, Google, Microsoft, Apple, etc.).  Sorry, configuring those developer portals
 is beyond what a solution template can target and automate for you!  Someday maybe.
 
-### Footnote
+# Footnote
 VSSolutionTemplates is built on top of another open source project called [pecan-waffle](https://github.com/ligershark/pecan-waffle).
 Pecan-waffle a self-contained command line utility that can be used to easily create and share Visual Studio project templates
 and item templates.  It allows you to take an arbitrary Visual Studio project and turn it into a Visual Studio project template

@@ -5,12 +5,12 @@ The accelerator is captured in a Visual Studio project template that you can use
 Azure mobile app that features:
 * Traditional "File | New Project" approach for an entirely Visual Studio creation experience, no Azure portal creation or 
 configuration required
-* Generated app is ready to run with all these key mobile app capabilities completely integrated:
+* A ready to run app with all these key mobile app capabilities completely integrated:
 	* Cross platform client apps (iOS, Android, Windows UWP, Win 8.1, Win 8.1 Phone)
 	* Offline data sync with conflict resolution
 	* Modern authentication (Facebook, Twitter, Microsoft, Google, Azure Active Directory)
-	* Push notifications (Apple, Google, Windows, Amazon, Baidu (Android China))
-	* ARM Template means your solution is DevOps ready and service creation can be done in Visual Studio
+	* Push notifications (Apple, Google, Windows -- Coming soon: Amazon, Baidu (Android China))
+	* ARM Template that makes your solution DevOps ready and service creation can be done in Visual Studio
 * Application capabilities can be turned on or off individually by simple configuration rather than requiring a coding exercise
 	* Offline Sync
 	* Authentication
@@ -55,11 +55,11 @@ install it in Visual Studio.
 
 
 # Video
-Watch [this short video](http://myshortvid) to see just how easy it is to build a fully featured Azure mobile app.
+Watch [this short video](http://myshortvid) to see just how easy it is to install and use JumpStreetMobile.
 
-Watch [this much longer video](http://mylongervid) to see how to register your app with the authentication and push notification providers (Facebook,
-Twitter, Google, Microsoft, Apple, etc.).  Sorry, configuring those developer portals is outside the scope of what a solution 
-template can target and automate!  Someday maybe.
+Watch [this much longer video](http://mylongervid) to see how to register your app with the authentication and push 
+notification providers (Facebook, Twitter, Google, Microsoft, Apple, etc.).  Sorry, configuring those developer portals
+is outside the scope of what a solution template can target and automate!  Someday maybe.
 
 ### Footnote
 VSSolutionTemplates is built on top of another open source project called [pecan-waffle](https://github.com/ligershark/pecan-waffle).

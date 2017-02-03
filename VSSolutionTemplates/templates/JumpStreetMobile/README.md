@@ -34,8 +34,8 @@ get it installed in Visual Studio.
 them in order to successfully build the solution.
 
 ### JumpStreeMobile Prerequisites
-* Visual Studio 2015 Community or Enterprise (VS 2017 may work but hasn't been tested)
-* Azure SDK 2.9 or later (earlier versions might work but weren't tested)
+* Visual Studio 2015 Community Update 3 or Enterprise Update 3 (VS 2017 may work but hasn't been tested)
+* Visual Studio Tools for Windows Universal 
 * Install SQLite runtime for Windows clients
 	* Win RT 8.1
 		* http://www.sqlite.org/2016/sqlite-winrt81-3120200.vsix 

@@ -61,8 +61,8 @@
       }
     },
     "gcmCredential": {
+      // Copy the SENDER_ID here ______ and also use it to replace "<product number>" in MainActivities.cs
       "value": {
-        // Copy the SENDER_ID here ______ and also use it to replace "<product number>" in MainActivities.cs
         "googleApiKey": "" // If you set this credential you have to uncomment gcmCredential in Notification Hub configuration section
       }
     },

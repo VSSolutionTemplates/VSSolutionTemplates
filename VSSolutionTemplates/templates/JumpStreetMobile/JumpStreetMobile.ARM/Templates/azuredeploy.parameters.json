@@ -2,10 +2,10 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    // //Required Parameters
+    // // These 3 parameters are required, the rest are optional if auth and psn aren't required
     // The following 3 parameters are required but the rest are optional so if you don't need
     // authentication or push notification just set these 3 parameters and then you are ready
-    // to deploy, publish, run the app.
+    // to deploy, publish, and run the app.
     // --------
     "appName": {
       "value": "JumpStreetMobile" // Required value, must be valid service name that will later
@@ -18,7 +18,7 @@
       "value": "" // Required value, must meet password strength requirements
     },
 
-    // Provider Credentials for Authentication
+    // Provider credentials for authentication
     "isAuthenticationEnabled": {
       "value": false
     },
@@ -53,7 +53,7 @@
       }
     },
 
-    // Provider Credentials for Push Notification (for Windows, Google, and Apple push notification services)
+    // Provider credentials for push notification (pns) for Windows, Google, and Apple push notification services
     "wnsCredential": {
       "value": {
         "packageSid": "", // If you set this credential you have to uncomment wnsCredential in Notification Hub configuration section

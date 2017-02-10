@@ -6,7 +6,6 @@
     // The following 3 parameters are required but the rest are optional so if you don't need
     // authentication or push notification just set these 3 parameters and then you are ready
     // to deploy, publish, and run the app.
-    // --------
     "appName": {
       "value": "JumpStreetMobile" // Required value, must be valid service name that will later
       // be deployed as <appName>.azurewebsites.net
@@ -55,32 +54,32 @@
 
     // Provider credentials for push notification (pns) for Windows, Google, and Apple push notification services
     "wnsCredential": {
+      // If you set this credential, uncomment wnsCredential in Notification Hub configuration section in azuredeploy.json
       "value": {
-        "packageSid": "", // If you set this credential you have to uncomment wnsCredential in Notification Hub configuration section
+        "packageSid": "",
         "secretKey": ""
       }
     },
     "gcmCredential": {
+      // // If you set this credential, uncomment gcmCredential in Notification Hub configuration section in azuredeploy.json
       // Copy the SENDER_ID here ______ and also use it to replace "<product number>" in MainActivities.cs
       "value": {
         "googleApiKey": "" // If you set this credential you have to uncomment gcmCredential in Notification Hub configuration section
       }
     },
     "apnsCredential": {
-      // If you configure this credential you have to uncomment apnsCredential in the Notification
-      // Hub configuration section of the azuredeploy.json file
-      //
-      // Note: The value in the Identity field on the iOS Application tab of the iOS project settings
-      //       is the Bundle ID that must be used when creating the certificate for push notification
-      //       on the Mac
+      // // If you set this credential, uncomment apnsCredential in Notification Hub configuration section in azuredeploy.json
+      // Note: The value in the Identity field on the iOS Application tab of the iOS project settings in Visual Studio
+      //       is the Bundle ID that must be used when creating the certificate for push notification on the Mac
       "value": {
-        // Set apnsCertificate to Apple Push Notification certificate converted to base 64 string.
+        // // Set apnsCertificate to Apple Push Notification certificate converted to base 64 string.
         // You can convert the certificate a base 64 string by using these two PowerShell commands:
         //     $fileContentBytes = get-content ‘MyPushCert.p12’ -Encoding Byte
         //     [System.Convert]::ToBase64String($fileContentBytes) | Out-File ‘MyPushCertAsBase64String.txt’
         "apnsCertificate": "",
         // Set to the password that was set when the .p12 cert was created on the Mac (via export)
         "certificateKey": "",
+        // // Set desired endpoint gateway
         // Should be set to either:
         //     gateway.sandbox.push.apple.com  // for dev cert
         //     gateway.push.apple.com          // for production cert

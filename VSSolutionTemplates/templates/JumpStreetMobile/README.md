@@ -23,12 +23,17 @@ for each new mobile app or perform tedious and error-prone copy & paste operatio
 You can use JumpStreetMobile as a starting point for your next mobile application or as a sample app that shows how all the 
 major features of Azure App Service Mobile Apps are integrated.
 
+Want to see it in action before you install it?  Take a look at these [demo videos here](#Videos).
+
 # How To Try It
-You don't have to clone this repo or study its code to quickly try JumpStreetMobile. All you have to do is download the latest
-version by clicking the "VSSolutionTemplates.vsix" link
-from [here](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/build/artifacts).  Once it's downloaded you may
+You don't have to clone this repo or study its code to quickly try JumpStreetMobile. All you have to do is download and install 
+the latest version by clicking the "VSSolutionTemplates.vsix" link from 
+[here](https://ci.appveyor.com/project/sayedihashimi/vssolutiontemplates/build/artifacts).  Note: Once it's downloaded you may
 have to rename the installer from "VSSolutionTemplates.zip" to "VSSolutionTemplates.vsix" and then simply double-click it to
 get it installed in Visual Studio.  
+
+To get a quick overview of JumpStreetMobile and see how easy it is to get started and use it, take a look at these
+[demo videos here](#Videos).
 
 **IMPORTANT:** If you don't already have the JumpStreetMobile prerequisites listed below installed, you'll need to install
 them in order to successfully build the solution.
@@ -57,7 +62,7 @@ them in order to successfully build the solution.
 		 = {"Unable to load DLL 'sqlite3.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)"}"
 
 
-# Video
+# Videos
 These three videos will show you everything you need to know to understand, configure, deploy and run a fully featured, 
 cross-platform Azure mobile application that you can use as an accelerated starting point for your next mobile app.
 

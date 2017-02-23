@@ -62,7 +62,7 @@ them in order to successfully build the solution.
 		 = {"Unable to load DLL 'sqlite3.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)"}"
 
 
-# Videos
+# <a name="Videos"></a>Videos
 These three videos will show you everything you need to know to understand, configure, deploy and run a fully featured, 
 cross-platform Azure mobile application that you can use as an accelerated starting point for your next mobile app.
 

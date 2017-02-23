@@ -44,10 +44,12 @@ them in order to successfully build the solution.
 	* UWP
 		* http://sqlite.org/2016/sqlite-uwp-3120200.vsix
 * Update any broken library references in the Windows projects: <br/>
-	**Note:** If you see broken references in the Windows projects (they show up yellow), then you need to update those
-	references to point to the local libraries by right-clicking References > Add Reference in each Windows project and
-	expand the Windows folder > Extensions. Then enable the appropriate SQLite for Windows SDK along with the Visual 
-	C++ 2013 Runtime for Windows SDK. The SQLite SDK names vary slightly with each Windows platform.
+	**Note:** If you see broken references to the platform specific SQLite library in the Windows projects
+	(they show up yellow), then you need to update those references to point to the local libraries by 
+	right-clicking References > Add Reference in each Windows project and expand the 
+	"Windows folder > Extensions" tab. Then make sure the checkbox is checked for the appropriate 
+	SQLite for Windows SDK along with the Visual C++ 2013 Runtime for Windows SDK. The SQLite SDK names 
+	vary slightly with each Windows platform.
 
 	If you have broken references and don't fix them as described above, the app with throw an exception after launch 
 	that says:
@@ -56,14 +58,21 @@ them in order to successfully build the solution.
 
 
 # Video
-These two videos will show you everything you need to know to configure, deploy and run a fully featured, cross-platform
-Azure mobile application that you can use as an accelerated starting point for your next mobile app.
+These three videos will show you everything you need to know to understand, configure, deploy and run a fully featured, 
+cross-platform Azure mobile application that you can use as an accelerated starting point for your next mobile app.
 
-Watch [this short video](http://myshortvid) to see just how easy it is to install and use JumpStreetMobile.
+### Quick Overview
+Watch this [quick 8-minute video](http://aka.ms/JSMQuickDemo) to understanding what JumpStreetMobile is and how easy it is to use.
+This video does skip over the configuration of dev portals for authentication and push notification providers for brevity sake but
+you can see that in the full click-through video below.
 
-Watch [this much longer video](http://mylongervid) to see how to register your app with the authentication and push 
-notification providers (Facebook, Twitter, Google, Microsoft, Apple, etc.).  Sorry, configuring those developer portals
-is beyond what a solution template can target and automate for you!  Someday maybe.
+### Installation and Basic Use
+Watch [this short video](http://myshortvid) to see just how easy it is to install JumpStreetMobile and F5-run it straight away.
+
+### Full click-through of Everything
+Watch [this much longer video](http://mylongervid) to see a full click-through of every step, from creation to deployment.
+It covers how to register your app with the dev portals for authentication and push notification providers (Facebook, 
+Twitter, Google, Microsoft, Apple, etc.) and the small details in Visual Studio that can hang up the beginner.
 
 # Footnote
 VSSolutionTemplates is built on top of another open source project called [pecan-waffle](https://github.com/ligershark/pecan-waffle).

@@ -61,12 +61,20 @@ them in order to successfully build the solution.
 		* "Unable to set temporary directory." and if you look at the inner exception you will see it say: "InnerException
 		 = {"Unable to load DLL 'sqlite3.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)"}"
 
-
 # <a name="Videos"></a>Videos
 These three videos will show you everything you need to know to understand, configure, deploy and run a fully featured, 
 cross-platform Azure mobile application that you can use as an accelerated starting point for your next mobile app.
 
 ### Quick Overview
+Watch this [quick 8-minute video](http://aka.ms/JSMQuickDemo) to understanding what JumpStreetMobile is and how easy it is to use.
+
+Note: This video does skip over the configuration of the dev portals for authentication and push notification providers for brevity sake but
+the documentation for configuring those dev portals is [here](https://docs.microsoft.com/en-us/azure/app-service-mobile/app-service-mobile-xamarin-forms-get-started-users 
+).  Once you configure the dev portals you can follow the instructions in azuredeploy.parameters.json and use the credentials you created in the
+dev portals to configure the ARM template a very similar way to how you configure the Azure portal.
+
+<!---
+# <a name="Videos"></a>Video
 Watch this [quick 8-minute video](http://aka.ms/JSMQuickDemo) to understanding what JumpStreetMobile is and how easy it is to use.
 This video does skip over the configuration of dev portals for authentication and push notification providers for brevity sake but
 you can see that in the full click-through video below.
@@ -78,6 +86,7 @@ Watch [this short video](http://myshortvid) to see just how easy it is to instal
 Watch [this much longer video](http://mylongervid) to see a full click-through of every step, from creation to deployment.
 It covers how to register your app with the dev portals for authentication and push notification providers (Facebook, 
 Twitter, Google, Microsoft, Apple, etc.) and the small details in Visual Studio that can hang up the beginner.
+--->
 
 # Footnote
 VSSolutionTemplates is built on top of another open source project called [pecan-waffle](https://github.com/ligershark/pecan-waffle).

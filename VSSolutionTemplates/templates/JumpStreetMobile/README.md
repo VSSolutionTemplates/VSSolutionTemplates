@@ -67,7 +67,7 @@ Watch this [quick 8-minute video](http://aka.ms/JSMQuickDemo) to understanding w
 Note: This video does skip over the configuration of the dev portals for authentication and push notification providers for brevity sake but
 the documentation for configuring those dev portals is [here](https://docs.microsoft.com/en-us/azure/app-service-mobile/app-service-mobile-xamarin-forms-get-started-users 
 ).  Once you configure the dev portals you can follow the instructions in azuredeploy.parameters.json and use the credentials you created in the
-dev portals to configure the ARM template a very similar way to how you configure the Azure portal.
+dev portals to configure the ARM template.  If there is interest, I can post a video of the click-through for that entire process.
 
 <!---
 # <a name="Videos"></a>Video

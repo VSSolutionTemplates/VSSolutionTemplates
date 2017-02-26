@@ -61,11 +61,7 @@ them in order to successfully build the solution.
 		* "Unable to set temporary directory." and if you look at the inner exception you will see it say: "InnerException
 		 = {"Unable to load DLL 'sqlite3.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)"}"
 
-# <a name="Videos"></a>Videos
-These three videos will show you everything you need to know to understand, configure, deploy and run a fully featured, 
-cross-platform Azure mobile application that you can use as an accelerated starting point for your next mobile app.
-
-### Quick Overview
+# <a name="Videos"></a>Video
 Watch this [quick 8-minute video](http://aka.ms/JSMQuickDemo) to understanding what JumpStreetMobile is and how easy it is to use.
 
 Note: This video does skip over the configuration of the dev portals for authentication and push notification providers for brevity sake but

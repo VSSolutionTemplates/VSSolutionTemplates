@@ -85,7 +85,7 @@ Twitter, Google, Microsoft, Apple, etc.) and the small details in Visual Studio 
 --->
 
 # Footnote
-VSSolutionTemplates is built on top of another open source project called [pecan-waffle](https://github.com/ligershark/pecan-waffle).
+JumpStreetMobile is built on top of another open source project called [pecan-waffle](https://github.com/ligershark/pecan-waffle).
 Pecan-waffle a self-contained command line utility that can be used to easily create and share Visual Studio project templates
 and item templates.  It allows you to take an arbitrary Visual Studio project and turn it into a Visual Studio project template
 without the need to make any special modifications to the source project.  
@@ -96,5 +96,8 @@ format you need to develop and test it and then use pecan-waffle to transform th
 project template.
 
 While pecan-waffle's approach is a significant benefit for a single project solution, its an absolute necessity for large grained
-solutions like VSSoluitonTemplates due to their multiple sub-projects and their tight integration.  As a practical matter, I would
-not have been able to build VSSoluitonTemplates without pecan-waffle.
+solutions like JumpStreetMobile due to it's multiple sub-projects and their tight integration with one another.  As a practical 
+matter, I would not have been able to build JumpStreetMobile without pecan-waffle.
+
+JumpStreetMobile is the first example of a VSSoluitonTemplate and I hope to build more in the future and include them
+in the parent project [VSSolutionTemplates](https://github.com/VSSolutionTemplates/VSSolutionTemplates)

@@ -100,4 +100,4 @@ solutions like JumpStreetMobile due to it's multiple sub-projects and their tigh
 matter, I would not have been able to build JumpStreetMobile without pecan-waffle.
 
 JumpStreetMobile is the first example of a VSSoluitonTemplate and I hope to build more in the future and include them
-in the parent project [VSSolutionTemplates](https://github.com/VSSolutionTemplates/VSSolutionTemplates)
+in the parent project [VSSolutionTemplates](https://github.com/VSSolutionTemplates/VSSolutionTemplates).

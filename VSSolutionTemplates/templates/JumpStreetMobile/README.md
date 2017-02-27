@@ -91,7 +91,7 @@ and item templates.  It allows you to take an arbitrary Visual Studio project an
 without the need to make any special modifications to the source project.  
 
 In contrast to pecan-waffle, the standard approach for creating project templates requires you to modify the project which breaks
-it so you can no long run or test that code base. The whole idea of pecan-waffle is that you can keep you source project in whatever
+it so you can no long run or test that code base. The whole idea of pecan-waffle is that you can keep your source project in whatever
 format you need to develop and test it and then use pecan-waffle to transform the source project into an actual Visual Studio
 project template.
 

@@ -19,7 +19,7 @@ Template.
 At the moment, there is only one solution template ([JumpStreetMobile](https://github.com/VSSolutionTemplates/VSSolutionTemplates/tree/master/VSSolutionTemplates/templates/JumpStreetMobile)) 
 but more are being planned.  Stay tuned!
 
-### Note: Support for this project is my Russ Williams, only. This is a personal project and not supported by Microsoft.
+### Note: Support for this project is by Russ Williams, only. This is a personal project and not supported by Microsoft.
 
 # Footnote
 VSSolutionTemplates is built on top of another open source project called [pecan-waffle](https://github.com/ligershark/pecan-waffle).

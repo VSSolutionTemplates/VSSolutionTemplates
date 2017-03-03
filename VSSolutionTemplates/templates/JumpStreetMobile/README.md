@@ -71,8 +71,6 @@ the documentation for configuring those dev portals is [here](https://docs.micro
 ).  Once you configure the dev portals you can follow the instructions in azuredeploy.parameters.json and use the credentials you created in the
 dev portals to configure the ARM template.  If there is interest, I can post a video of the click-through for that entire process.
 
-### Note: Support for this project is my Russ Williams, only. This is a personal project and not supported by Microsoft.
-
 <!---
 # <a name="Videos"></a>Video
 Watch this [quick 8-minute video](http://aka.ms/JSMQuickDemo) to understanding what JumpStreetMobile is and how easy it is to use.

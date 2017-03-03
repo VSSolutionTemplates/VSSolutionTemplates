@@ -25,7 +25,7 @@ major features of Azure App Service Mobile Apps are integrated.
 
 Want to see it in action before you install it?  Take a look at these [demo videos here](#Videos).
 
-## Note: Support for this project is by Russ Williams only. This is a personal project and not supported by Microsoft.
+### Note: Support for this project is by Russ Williams only. This is a personal project and not supported by Microsoft.
 
 # How To Try It
 You don't have to clone this repo or study its code to quickly try JumpStreetMobile. All you have to do is download and install 

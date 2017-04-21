@@ -41,15 +41,13 @@ To get a quick overview of JumpStreetMobile and see how easy it is to get starte
 them in order to successfully build the solution.
 
 ### JumpStreeMobile Prerequisites
-* Visual Studio 2015 Community Update 3 or Enterprise Update 3 (VS 2017 may work but hasn't been tested)
-* Visual Studio Tools for Windows Universal 
+* Visual Studio 2015 Community Update 3 or Enterprise Update 3
+* Visual Studio Tools for Windows Universal (this is a Visual Studio installation option, not a separate download)
+* [Microsoft Azure SDK for .NET (VS 2015) - 3.0](https://www.microsoft.com/en-us/download/details.aspx?id=54917)
 * Install SQLite runtime for Windows clients
-	* Win RT 8.1
-		* http://www.sqlite.org/2016/sqlite-winrt81-3120200.vsix 
-	* WP 8.1
-		* http://www.sqlite.org/2016/sqlite-wp81-winrt-3120200.vsix
-	* UWP
-		* http://sqlite.org/2016/sqlite-uwp-3120200.vsix
+	* [Win RT 8.1](http://www.sqlite.org/2016/sqlite-winrt81-3120200.vsix)
+	* [WP 8.1](http://www.sqlite.org/2016/sqlite-wp81-winrt-3120200.vsix)
+	* [UWP](http://sqlite.org/2016/sqlite-uwp-3120200.vsix)
 * Update any broken library references in the Windows projects: <br/>
 	**Note:** If you see broken references to the platform specific SQLite library in the Windows projects
 	(they show up yellow), then you need to update those references to point to the local libraries by 

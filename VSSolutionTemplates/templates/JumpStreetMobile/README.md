@@ -44,7 +44,7 @@ them in order to successfully build the solution.
 * Visual Studio 2015 Community Update 3 or Enterprise Update 3
 * Visual Studio Tools for Windows Universal (this is a Visual Studio installation option, not a separate download)
 * [Microsoft Azure SDK for .NET (VS 2015) - 3.0](https://www.microsoft.com/en-us/download/details.aspx?id=54917)
-* Install SQLite runtime for Windows clients
+* Install SQLite runtime for Windows clients using the links below:
 	* [Win RT 8.1](http://www.sqlite.org/2016/sqlite-winrt81-3120200.vsix)
 	* [WP 8.1](http://www.sqlite.org/2016/sqlite-wp81-winrt-3120200.vsix)
 	* [UWP](http://sqlite.org/2016/sqlite-uwp-3120200.vsix)

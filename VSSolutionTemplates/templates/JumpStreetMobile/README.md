@@ -48,6 +48,10 @@ them in order to successfully build the solution.
 	* [Win RT 8.1](http://www.sqlite.org/2016/sqlite-winrt81-3120200.vsix)
 	* [WP 8.1](http://www.sqlite.org/2016/sqlite-wp81-winrt-3120200.vsix)
 	* [UWP](http://sqlite.org/2016/sqlite-uwp-3120200.vsix)
+* Update Xamarin (Tools | Options | Xamarin | Other then click "Check Now" link) and update the 
+	Microsoft.Azure.Mobile.Client.SQLiteStore Nuget packages in all client project abd Portable (right-click 
+	each project and select "Manage Nuget Packakges..." and then select the Update tab and select each package and
+	click the Update button)
 * Update any broken library references in the Windows projects: <br/>
 	**Note:** If you see broken references to the platform specific SQLite library in the Windows projects
 	(they show up yellow), then you need to update those references to point to the local libraries by 

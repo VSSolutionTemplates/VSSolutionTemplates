@@ -18,7 +18,7 @@ param(
     [switch]$clean
 )
 
-nuget.exe update -self 
+(get-nuget) update -self
 
 Set-StrictMode -Version Latest
 

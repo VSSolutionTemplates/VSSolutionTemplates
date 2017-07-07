@@ -129,7 +129,7 @@ function RestoreNuGetPackages(){
 
 
 # being script
-(get-nuget) update -self 
+nuget.exe update -self
 try{
     EnsurePsbuildInstlled
     Import-NuGetPowershell

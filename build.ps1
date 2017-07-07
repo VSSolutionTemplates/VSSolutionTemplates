@@ -18,8 +18,6 @@ param(
     [switch]$clean
 )
 
-(get-nuget) -self
-
 Set-StrictMode -Version Latest
 
 function Get-ScriptDirectory{
@@ -131,6 +129,7 @@ function RestoreNuGetPackages(){
 
 
 # being script
+(get-nuget) update -self 
 try{
     EnsurePsbuildInstlled
     Import-NuGetPowershell

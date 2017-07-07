@@ -5,11 +5,11 @@
     "Microsoft.Bcl": "1.1.10",
     "Microsoft.Bcl.Build": "1.0.21",
     "Microsoft.Net.Http": "2.2.29",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
     "MvvmLightLibs": "5.3.0",
-    "Newtonsoft.Json": "9.0.1",
-    "Xam.Plugin.Connectivity": "2.2.12",
-    "Xamarin.Forms": "2.3.3.168"
+    "Newtonsoft.Json": "10.0.3",
+    "Xam.Plugin.Connectivity": "2.3.0",
+    "Xamarin.Forms": "2.3.4.247"
   },
   "frameworks": {
     "uap10.0": {}

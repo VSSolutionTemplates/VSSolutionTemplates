@@ -1,3 +1,4 @@
+
 [cmdletbinding(DefaultParameterSetName='build')]
 param(
     [Parameter(ParameterSetName='build',Position=1)]
@@ -16,6 +17,8 @@ param(
     [Parameter(ParameterSetName='clean',Position=0)]
     [switch]$clean
 )
+
+nuget.exe update -self 
 
 Set-StrictMode -Version Latest
 
